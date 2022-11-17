@@ -1,4 +1,4 @@
-<h2>Template: Básicos</h2>
+<h2>Conferencia AD2023: Inscripciones</h2>
 <hr>
 
 <div class="row">
@@ -7,70 +7,230 @@
         <form (ngSubmit)="guardar()"
               #miFormulario="ngForm"
               autocomplete="off">
-            
-            <!-- Campo de producto -->
+
+            <!-- Campo de Nombre -->
             <div class="mb-3 row">
-
-
-                <label class="col-sm-3 col-form-label">Producto</label>
-
+                <label class="col-sm-3 col-form-label">Nombre</label>
 
                 <div class="col-sm-9">
-                    
                     <input type="text"
                            class="form-control"
                            [ngModel]="initForm.producto"
-                           name="producto"
-                           placeholder="Nombre del producto"
+                           name="nombre"
+                           placeholder="Nombre Completo"
                            required
                            minlength="3">
 
                     <span class="form-text text-danger"
                         *ngIf="nombreValido()">
-                        Debe de ser de 3 letras
+                        Debe introducir el nombre completo
                     </span>
                 </div>
             </div>
 
-
-
-
-
-
-
-            <!-- Campo de producto -->
+            <!-- Campo de Carnet id -->
             <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Precio</label>
-                <div class="col-sm-9">
-                    <input type="number"
-                           class="form-control"
-                           [ngModel]="initForm.precio"
-                           name="precio"
-                           placeholder="Precio del producto"
-                           required
-                           min="0">
-                    <span class="form-text text-danger"
-                           *ngIf="precioValido()">
-                        El precio debe de ser 0 o mayor
-                    </span>
-                </div>
-            </div>
+              <label class="col-sm-3 col-form-label">Carnet Identidad</label>
 
-            <!-- Campo de existencias -->
-            <div class="mb-3 row">
-                <label class="col-sm-3 col-form-label">Existencias</label>
-                <div class="col-sm-9">
-                    <input type="number"
-                           class="form-control"
-                           [ngModel]="initForm.existencias"
-                           name="existencias"
-                           customMin
-                           [minimo]="0"
-                           placeholder="Existencias del producto"
+              <div class="col-sm-9">
+                  <input type="text"
+                         class="form-control"
+                         [ngModel]="initForm.ci"
+                         name="ci"
+                         placeholder="el ci es de 11 digitos"
+                         required
+                         minlength="11"
+                         maxlength="11"
+                         >
+
+                  <span class="form-text text-danger"
+                      *ngIf="ciValido()">
+                      Debe introducir un # de identidad de 11 digitos
+                  </span>
+              </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">Género</label>
+            <div class="col-sm-9">
+
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           value="M"
+                           [(ngModel)]="initForm.genero"
+                           name="radioGenero"
+                           id="radioMasculino"
                            required>
+                    <label class="form-check-label" for="radioMasculino">
+                      Masculino
+                    </label>
                 </div>
-            </div>
 
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           value="F"
+                           [(ngModel)]="initForm.genero"
+                           name="radioGenero"
+                           id="radioFemenino"
+                           required>
+                    <label class="form-check-label" for="radioFemenino">
+                      Femenino
+                    </label>
+                </div>
+
+            </div>
+          </div>
+
+            <!-- Campo de Celular -->
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Telefono Movil</label>
+
+              <div class="col-sm-9">
+                  <input type="number"
+                         class="form-control"
+                         [ngModel]="initForm.celular"
+                         name="celular"
+                         placeholder="Introduzca su número de teléfono celular"
+                         required
+                         >
+
+                  <span class="form-text">
+                      Ej. 52412536 o 05352412536
+                  </span>
+              </div>
+          </div>
+
+            <!-- Campo de Carnet Email -->
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Email</label>
+
+              <div class="col-sm-9">
+                  <input type="text"
+                         class="form-control"
+                         [ngModel]="initForm.email"
+                         name="email"
+                         placeholder="Introducir Email"
+                         required
+                         >
+
+                  <span class="form-text text-danger"
+                      *ngIf="emailValido()">
+                      Formato de Email incorrecto. Debe contener @ y .
+                  </span>
+              </div>
+          </div>
+
+          <!-- Category Ministerial -->
+<hr>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label fw-bold">Categoría Ministerial</label>
+              <span class="form-text lh-1 text-black-50 mb-3">Ya pueden registrarse como ministros ordenados aquellos que sean ascendidos a dicha categoría en esta conferencia</span>
+              <div class="col-sm-9">
+
+                  <div class="form-check">
+                      <input class="form-check-input"
+                             type="radio"
+                             value="1"
+                             [(ngModel)]="initForm.categoria"
+                             name="radioCategoria"
+                             id="radioNacional"
+                             required>
+                      <label class="form-check-label" for="radioNacional">
+                        Nacional
+                      </label>
+                  </div>
+
+                  <div class="form-check">
+                      <input class="form-check-input"
+                             type="radio"
+                             value=2
+                             [(ngModel)]="initForm.categoria"
+                             name="radioCategoria"
+                             id="radioLicenciado"
+                             required>
+                      <label class="form-check-label" for="radioLicenciado">
+                        Licenciado
+                      </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           value=3
+                           [(ngModel)]="initForm.categoria"
+                           name="radioCategoria"
+                           id="radioOrdenado"
+                           required>
+                    <label class="form-check-label" for="radioOrdenado">
+                      Ordenado
+                    </label>
+                </div>
+
+              </div>
+          </div>
+<hr>
+
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Distrito</label>
+            <select class="form-select form-select-sm"
+                    name="distrito" ngModel>
+              <option value=null selected>Seleccione su distrito</option>
+              <option value="1">Occidente</option>
+              <option value="2">Centro Oeste</option>
+              <option value="3">Centro Este</option>
+              <option value="4">Oriente Norte</option>
+              <option value="5">Oriente Sur</option>
+            </select>
+          </div>
+
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Provincia</label>
+            <select class="form-select form-select-sm"
+                    name="provincia" ngModel>
+                    <option value="" disabled>Seleccione una Provincia</option>
+                    <option *ngFor="let provincia of provincias" [ngValue]="provincia.id">
+                      {{ provincia.name }}
+                    </option>
+            </select>
+          </div>
+
+<hr>
+          <!-- Switches -->
+          <div class="row mb-3">
+              <label class="col-sm-3 col-form-label">Notificaciones</label>
+              <div class="col-sm-9">
+
+                  <div class="form-check form-switch mt-2">
+                      <input class="form-check-input"
+                             type="checkbox"
+                             [(ngModel)]="initForm.notificaciones"
+                             name="notificaciones"
+                             id="flexSwitchCheckChecked">
+                      <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
+                  </div>
+
+              </div>
+          </div>
+
+          <!-- Switches -->
+          <div class="row mb-3">
+              <label class="col-sm-3 col-form-label"></label>
+              <div class="col-sm-9">
+                  <div class="form-check">
+                      <input class="form-check-input"
+                             type="checkbox"
+                             name="terminos"
+                             [(ngModel)]="terminosYCondiciones"
+                             id="flexCheckDefault"
+                             required>
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Términos y condiciones de uso
+                      </label>
+                  </div>
+              </div>
+          </div>
 
             <div class="row">
                 <div class="col">
@@ -82,6 +242,41 @@
                 </div>
             </div>
 
+
+
+<hr>
+            <!-- Campo de producto -->
+            <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Precio</label>
+              <div class="col-sm-9">
+                  <input type="number"
+                         class="form-control"
+                         [ngModel]="initForm.precio"
+                         name="precio"
+                         placeholder="Precio del producto"
+                         required
+                         min="0">
+                  <span class="form-text text-danger"
+                         *ngIf="precioValido()">
+                      El precio debe de ser 0 o mayor
+                  </span>
+              </div>
+          </div>
+
+          <!-- Campo de existencias -->
+          <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Existencias</label>
+              <div class="col-sm-9">
+                  <input type="number"
+                         class="form-control"
+                         [ngModel]="initForm.existencias"
+                         name="existencias"
+                         customMin
+                         [minimo]="1"
+                         placeholder="Existencias del producto"
+                         required>
+              </div>
+          </div>
 
 
         </form>
