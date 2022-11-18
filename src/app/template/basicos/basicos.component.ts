@@ -24,6 +24,7 @@ export class BasicosComponent implements OnInit {
     email: '',
     celular: '',
     categoria: '1',
+    funciones: '1',
     distrito: '1',
     provincia: '',
     presbiterio: '',

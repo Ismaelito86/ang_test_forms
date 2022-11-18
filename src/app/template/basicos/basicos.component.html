@@ -1,4 +1,4 @@
-<h2>Conferencia ADCuba 2023: Inscripciones</h2>
+<h2>Conferencia AD Cuba 2023: Inscripciones</h2>
 <hr>
 
 <div class="row">
@@ -40,7 +40,7 @@
                          class="form-control"
                          [(ngModel)]="initForm.ci"
                          name="ci"
-                         placeholder="El Ci es de 11 digitos"
+                         placeholder="El CI es de 11 dígitos"
                          required
                          minlength="11"
                          maxlength="11"
@@ -88,7 +88,7 @@
 
             <!-- Campo de Celular -->
             <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Telefono Movil</label>
+              <label class="col-sm-3 col-form-label">Teléfono Móvil</label>
 
               <div class="col-sm-9">
                   <input type="tel"
@@ -103,7 +103,7 @@
                       Número de telefono incorrecto. Revise bien.
                   </span>
                   <span class="form-text">
-                      Ej. 52412536 o 05352412536
+                      Ej. 52412536 o +5352412536
                   </span>
 
               </div>
@@ -176,6 +176,63 @@
 
               </div>
           </div>
+
+          <!-- Funcion Ministerial -->
+          <div class="row mb-3">
+            <label class="col-sm-3 col-form-label fw-bold">Función Ministerial</label><div class="col-sm-9">
+
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           value="1"
+                           [(ngModel)]="initForm.funciones"
+                           name="radioFuncion"
+                           id="radioPastor"
+                           required>
+                    <label class="form-check-label" for="radioPastor">
+                      Pastor
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input"
+                           type="radio"
+                           value=2
+                           [(ngModel)]="initForm.funciones"
+                           name="radioFuncion"
+                           id="radioMisionero"
+                           required>
+                    <label class="form-check-label" for="radioMisionero">
+                      Misionero
+                    </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input"
+                         type="radio"
+                         value=3
+                         [(ngModel)]="initForm.funciones"
+                         name="radioFuncion"
+                         id="radioEvangelista"
+                         required>
+                  <label class="form-check-label" for="radioEvangelista">
+                    Evangelista
+                  </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input"
+                       type="radio"
+                       value=3
+                       [(ngModel)]="initForm.funciones"
+                       name="radioFuncion"
+                       id="radioMaestro"
+                       required>
+                <label class="form-check-label" for="radioMaestro">
+                  Maestro
+                </label>
+            </div>
+            </div>
+        </div>
 <hr>
 <!-- SELECT DISTRITO -->
 <div class="mb-3 row">
@@ -233,7 +290,7 @@
 </div>
     <!-- Switches -->
     <div class="row mb-3">
-      <label class="col-sm-3 col-form-label">Asistirá el Conyugue?</label>
+      <label class="col-sm-3 col-form-label">Asistirá el Cónyugue?</label>
       <div class="col-sm-9">
 
           <div class="form-check form-switch mt-2">
@@ -242,21 +299,21 @@
                     [(ngModel)]="initForm.matrimonio"
                     name="matrimonio"
                     id="flexSwitchCheckChecked1">
-              <label class="form-text lh-1 text-black-50 mb-3" for="flexSwitchCheckChecked1">Activar si viene con su conyugue.</label>
+              <label class="form-text lh-1 text-black-50 mb-3" for="flexSwitchCheckChecked1">Activar si viene con su cónyugue.</label>
           </div>
 
       </div>
     </div>
             <!-- Campo de Carnet id Conyugue-->
             <div class="mb-3 row" *ngIf="initForm.matrimonio">
-              <label class="col-sm-3 col-form-label">Carnet Identidad Conyugue</label>
+              <label class="col-sm-3 col-form-label">Carnet Identidad Cónyugue</label>
 
               <div class="col-sm-9">
                   <input type="text"
                          class="form-control"
                          [(ngModel)]="initForm.ci_conyugue"
                          name="ci_conyugue"
-                         placeholder="el Ci es de 11 digitos"
+                         placeholder="el CI es de 11 dígitos"
                          required
                          minlength="11"
                          maxlength="11"
