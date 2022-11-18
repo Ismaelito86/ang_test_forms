@@ -81,7 +81,7 @@ export class BasicosComponent implements OnInit {
       this.miFormulario.resetForm({
         nombre: '',
       });
-    }, 3000);
+    }, 10500);
 
 
     // console.log( this.miFormulario );

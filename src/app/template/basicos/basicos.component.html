@@ -289,8 +289,13 @@
               </div>
           </div>-->
           <div class="alert alert-info" role="alert" *ngIf="success">
-            El Ministro {{initForm.nombre}} ha sido Inscrito.
+            <h4 class="alert-heading">Bien!</h4>
+            <p>El Ministro <span class="fw-bold">{{initForm.nombre}}</span> ha sido Inscrito Correctamente. Estos fueron los datos: ci:<span class="fw-bold">{{initForm.ci}}</span>, email:<span class="fw-bold">{{initForm.email}}</span>.</p>
+            <hr>
+            <p class="mb-0">Asistencia del Conyugue: {{initForm.matrimonio}}</p>
+            <p class="mb-0">Hospedaje: {{initForm.hospedaje}}</p>
           </div>
+
             <div class="row">
                 <div class="col">
                     <button type="submit"
