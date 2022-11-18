@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { timer } from 'rxjs';
 import { presbiteriosData } from '../data/presbiterios';
 import { provinciasData } from '../data/provincias';
 import { Presbiterios, Provincias } from '../interfaces';
@@ -14,18 +15,20 @@ export class BasicosComponent implements OnInit {
 
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
+  success = false;
+
   initForm = {
-    nombre: 'RTX 4080ti',
+    nombre: '',
     ci: '',
     genero: 'F',
     email: '',
-    celular: null,
+    celular: '',
     categoria: '1',
     distrito: '1',
     provincia: '',
     presbiterio: '',
     matrimonio: true,
-    hospedaje: true,
+    hospedaje: false,
     ci_conyugue: '',
 
     precio: 10,
@@ -51,26 +54,33 @@ export class BasicosComponent implements OnInit {
     return this.miFormulario?.controls.ci?.invalid
             && this.miFormulario?.controls.ci?.touched;
   }
+  ciConyugueValido(): boolean {
+    return this.miFormulario?.controls.ci_conyugue?.invalid
+            && this.miFormulario?.controls.ci_conyugue?.touched;
+  }
 
   emailValido(): boolean {
     return this.miFormulario?.controls.email?.invalid
             && this.miFormulario?.controls.email?.touched;
   }
 
+  celularValido(): boolean {
+    return this.miFormulario?.controls.celular?.invalid
+            && this.miFormulario?.controls.celular?.touched;
+  }
   precioValido():boolean {
     return this.miFormulario?.controls.precio?.touched
             && this.miFormulario?.controls.precio?.value < 0;
   }
 
   // guardar( miFormulario: NgForm ) {
-  guardar() {
+  async guardar(){
     // console.log( this.miFormulario );
     console.log('Posteo correcto');
 
     this.miFormulario.resetForm({
-      producto: 'Algo',
-      precio: 0,
-      existencias: 0
+      producto: '',
     });
+    this.success = true;
   }
 }
