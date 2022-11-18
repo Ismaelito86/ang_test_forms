@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { presbiteriosData } from '../data/presbiterios';
+import { provinciasData } from '../data/provincias';
+import { Presbiterios, Provincias } from '../interfaces';
 
 @Component({
   selector: 'app-basicos',
@@ -11,49 +14,33 @@ export class BasicosComponent implements OnInit {
 
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
-  provincias = [
-    {id:"1",name:"Pinar del Río",distritoId:"1" },
-    {id:"2",name:"Artemisa",distritoId:"1"},
-    {id:"3",name:"Mayabeque",distritoId:"1" },
-    {id:"4",name:"La Habana",distritoId:"1" },
-    {id:"5",name:"Matanzas",distritoId:"1"},
-    {id:"16",name:"Isla de la Juventud",distritoId:"1"},
-    {id:"6",name:"Villa Clara",distritoId:"2" },
-    {id:"7",name:"Cienfuegos",distritoId:"2"},
-    {id:"8",name:"Santiespiritu",distritoId:"2" },
-    {id:"15",name:"Ciego de Ávila",distritoId:"3" },
-    {id:"9",name:"Camagüey",distritoId:"3"},
-    {id:"10",name:"Las Tunas",distritoId:"3"},
-    {id:"11",name:"Holguín",distritoId:"4"},
-    {id:"12",name:"Granma",distritoId:"4" },
-    {id:"13",name:"Santiago de Cuba",distritoId:"5" },
-    {id:"14",name:"Guantánamo",distritoId:"5" },
-  ];
-
   initForm = {
-    producto: 'RTX 4080ti',
-    ci:'',
+    nombre: 'RTX 4080ti',
+    ci: '',
     genero: 'F',
-    email:'',
-    celular:null,
+    email: '',
+    celular: null,
     categoria: '1',
-    distrito:null,
-    provincia:null,
-    notificaciones: true,
+    distrito: '1',
+    provincia: '',
+    presbiterio: '',
+    matrimonio: true,
+    hospedaje: true,
+    ci_conyugue: '',
 
     precio: 10,
     existencias: 10
+  };
+  provincias: Provincias[] = provinciasData;
+  presbiterios: Presbiterios[] = presbiteriosData;
+
+
+  terminosYCondiciones = false;
+
+  constructor() {
   }
 
-
-
-
-  terminosYCondiciones: boolean = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   nombreValido(): boolean {
     return this.miFormulario?.controls.producto?.invalid
@@ -86,5 +73,4 @@ export class BasicosComponent implements OnInit {
       existencias: 0
     });
   }
-
 }

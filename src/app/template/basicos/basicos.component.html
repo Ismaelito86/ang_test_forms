@@ -1,4 +1,4 @@
-<h2>Conferencia AD2023: Inscripciones</h2>
+<h2>Conferencia ADCuba 2023: Inscripciones</h2>
 <hr>
 
 <div class="row">
@@ -7,7 +7,9 @@
         <form (ngSubmit)="guardar()"
               #miFormulario="ngForm"
               autocomplete="off">
-
+            <div>
+              <label class="col-sm-3 col-form-label fw-bold">Informacion personal</label>
+            </div>
             <!-- Campo de Nombre -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Nombre</label>
@@ -15,7 +17,7 @@
                 <div class="col-sm-9">
                     <input type="text"
                            class="form-control"
-                           [ngModel]="initForm.producto"
+                           [ngModel]="initForm.nombre"
                            name="nombre"
                            placeholder="Nombre Completo"
                            required
@@ -35,7 +37,7 @@
               <div class="col-sm-9">
                   <input type="text"
                          class="form-control"
-                         [ngModel]="initForm.ci"
+                         [(ngModel)]="initForm.ci"
                          name="ci"
                          placeholder="el ci es de 11 digitos"
                          required
@@ -90,7 +92,7 @@
               <div class="col-sm-9">
                   <input type="number"
                          class="form-control"
-                         [ngModel]="initForm.celular"
+                         [(ngModel)]="initForm.celular"
                          name="celular"
                          placeholder="Introduzca su número de teléfono celular"
                          required
@@ -109,7 +111,7 @@
               <div class="col-sm-9">
                   <input type="text"
                          class="form-control"
-                         [ngModel]="initForm.email"
+                         [(ngModel)]="initForm.email"
                          name="email"
                          placeholder="Introducir Email"
                          required
@@ -123,7 +125,6 @@
           </div>
 
           <!-- Category Ministerial -->
-<hr>
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label fw-bold">Categoría Ministerial</label>
               <span class="form-text lh-1 text-black-50 mb-3">Ya pueden registrarse como ministros ordenados aquellos que sean ascendidos a dicha categoría en esta conferencia</span>
@@ -171,50 +172,102 @@
               </div>
           </div>
 <hr>
-
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Distrito</label>
-            <select class="form-select form-select-sm"
-                    name="distrito" ngModel>
-              <option value=null selected>Seleccione su distrito</option>
-              <option value="1">Occidente</option>
-              <option value="2">Centro Oeste</option>
-              <option value="3">Centro Este</option>
-              <option value="4">Oriente Norte</option>
-              <option value="5">Oriente Sur</option>
-            </select>
-          </div>
-
-          <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label">Provincia</label>
-            <select class="form-select form-select-sm"
-                    name="provincia" ngModel>
-                    <option value="" disabled>Seleccione una Provincia</option>
-                    <option *ngFor="let provincia of provincias" [ngValue]="provincia.id">
-                      {{ provincia.name }}
-                    </option>
-            </select>
-          </div>
+<!-- SELECT DISTRITO -->
+<div class="mb-3 row">
+  <label class="col-sm-3 col-form-label">Distrito</label>
+  <select class="form-select form-select-sm"
+          name="distrito" [(ngModel)]="initForm.distrito">
+    <option value=null selected>Seleccione su distrito</option>
+    <option value="1">Occidente</option>
+    <option value="2">Centro Oeste</option>
+    <option value="3">Centro Este</option>
+    <option value="4">Oriente Norte</option>
+    <option value="5">Oriente Sur</option>
+  </select>
+</div>
+<!-- SELECT PROVINCIA -->
+<div class="mb-3 row">
+  <label class="col-sm-3 col-form-label">Provincia</label>
+  <select class="form-select form-select-sm"
+          name="provincia" [(ngModel)]="initForm.provincia">
+          <option value="" disabled>Seleccione una Provincia</option>
+          <option *ngFor="let provincia of provincias|filtrar:initForm.distrito" [ngValue]="provincia.id">
+            {{ provincia.nombre }}
+          </option>
+  </select>
+</div>
+<!-- SELECT PRESBITERIO -->
+<div class="mb-3 row">
+  <label class="col-sm-3 col-form-label">Presbiterio</label>
+  <select class="form-select form-select-sm"
+          name="presbiterio"[(ngModel)]="initForm.presbiterio">
+          <option value="" disabled>Seleccione su Presbiterio</option>
+          <option *ngFor="let presbiterio of presbiterios|filtrar:initForm.provincia:'provincia'" [ngValue]="presbiterio.id">
+            {{ presbiterio.nombre }}
+          </option>
+  </select>
+</div>
 
 <hr>
+<div>
+  <label class="col-sm-3 col-form-label fw-bold">Otra Información</label>
+</div>
+    <!-- Switches -->
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label">Asistirá el Conyugue?</label>
+      <div class="col-sm-9">
+
+          <div class="form-check form-switch mt-2">
+              <input class="form-check-input"
+                    type="checkbox"
+                    [(ngModel)]="initForm.matrimonio"
+                    name="matrimonio"
+                    id="flexSwitchCheckChecked">
+              <label class="form-text lh-1 text-black-50 mb-3" for="flexSwitchCheckChecked">Activar si viene con su conyugue.</label>
+          </div>
+
+      </div>
+    </div>
+            <!-- Campo de Carnet id Conyugue-->
+            <div class="mb-3 row" *ngIf="initForm.matrimonio">
+              <label class="col-sm-3 col-form-label">Carnet Identidad Conyugue</label>
+
+              <div class="col-sm-9">
+                  <input type="text"
+                         class="form-control"
+                         [(ngModel)]="initForm.ci_conyugue"
+                         name="ci_conyugue"
+                         placeholder="el ci es de 11 digitos"
+                         required
+                         minlength="11"
+                         maxlength="11"
+                         >
+
+                  <span class="form-text text-danger"
+                      *ngIf="ciValido()">
+                      Debe introducir un # de identidad de 11 digitos
+                  </span>
+              </div>
+          </div>
+
           <!-- Switches -->
           <div class="row mb-3">
-              <label class="col-sm-3 col-form-label">Notificaciones</label>
+              <label class="col-sm-3 col-form-label">Tiene Hospedaje?</label>
               <div class="col-sm-9">
 
                   <div class="form-check form-switch mt-2">
                       <input class="form-check-input"
                              type="checkbox"
-                             [(ngModel)]="initForm.notificaciones"
-                             name="notificaciones"
+                             [(ngModel)]="initForm.hospedaje"
+                             name="hospedaje"
                              id="flexSwitchCheckChecked">
-                      <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
+                      <label class="form-text lh-1 text-black-50 mb-3" for="flexSwitchCheckChecked">Activar si cuenta con hospedaje propio para venir a la conferencia.</label>
                   </div>
 
               </div>
           </div>
 
-          <!-- Switches -->
+          <!-- Switches
           <div class="row mb-3">
               <label class="col-sm-3 col-form-label"></label>
               <div class="col-sm-9">
@@ -230,7 +283,7 @@
                       </label>
                   </div>
               </div>
-          </div>
+          </div>-->
 
             <div class="row">
                 <div class="col">
@@ -245,7 +298,7 @@
 
 
 <hr>
-            <!-- Campo de producto -->
+            <!-- Campo de producto-->
             <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Precio</label>
               <div class="col-sm-9">
@@ -263,7 +316,7 @@
               </div>
           </div>
 
-          <!-- Campo de existencias -->
+          <!-- Campo de existencias-->
           <div class="mb-3 row">
               <label class="col-sm-3 col-form-label">Existencias</label>
               <div class="col-sm-9">
@@ -303,8 +356,16 @@
         <pre>{{ miFormulario.value | json }}</pre>
 
         <span>CustomDirective</span>
-        <pre>{{ miFormulario.controls.existencias?.errors | json }}</pre>
+        <pre>{{ miFormulario.controls.existencias.errors | json }}</pre>
 
     </div>
 </div>
 
+<div class="row">
+  <div class="col">
+
+      <span>initForm</span>
+      <pre>{{ initForm | json }}</pre>
+
+  </div>
+</div>
