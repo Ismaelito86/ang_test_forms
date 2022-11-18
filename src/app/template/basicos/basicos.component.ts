@@ -27,12 +27,10 @@ export class BasicosComponent implements OnInit {
     distrito: '1',
     provincia: '',
     presbiterio: '',
+    iglesia: '',
     matrimonio: true,
     hospedaje: false,
-    ci_conyugue: '',
-
-    precio: 10,
-    existencias: 10
+    ci_conyugue: ''
   };
   provincias: Provincias[] = provinciasData;
   presbiterios: Presbiterios[] = presbiteriosData;
