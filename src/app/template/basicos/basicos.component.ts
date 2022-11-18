@@ -75,12 +75,17 @@ export class BasicosComponent implements OnInit {
 
   // guardar( miFormulario: NgForm ) {
   async guardar(){
+    this.success = true;
+    await setTimeout(() => {
+      this.success = false;
+      this.miFormulario.resetForm({
+        nombre: '',
+      });
+    }, 3000);
+
+
     // console.log( this.miFormulario );
     console.log('Posteo correcto');
 
-    this.miFormulario.resetForm({
-      producto: '',
-    });
-    this.success = true;
   }
 }

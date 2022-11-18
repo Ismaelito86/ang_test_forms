@@ -1,14 +1,6 @@
 <h2>Conferencia ADCuba 2023: Inscripciones</h2>
 <hr>
 
-<div class="alert alert-success hide" aria-live="assertive" aria-atomic="true" role="alert"
-      *ngIf="success">
-  <h4 class="alert-heading">Well done!</h4>
-  <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-  <hr>
-  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-</div>
-
 <div class="row">
     <div class="col">
 
@@ -221,7 +213,6 @@
   </select>
 </div>
 
-<hr>
 <div>
   <label class="col-sm-3 col-form-label fw-bold">Otra Información</label>
 </div>
@@ -235,8 +226,8 @@
                     type="checkbox"
                     [(ngModel)]="initForm.matrimonio"
                     name="matrimonio"
-                    id="flexSwitchCheckChecked">
-              <label class="form-text lh-1 text-black-50 mb-3" for="flexSwitchCheckChecked">Activar si viene con su conyugue.</label>
+                    id="flexSwitchCheckChecked1">
+              <label class="form-text lh-1 text-black-50 mb-3" for="flexSwitchCheckChecked1">Activar si viene con su conyugue.</label>
           </div>
 
       </div>
@@ -273,8 +264,8 @@
                              type="checkbox"
                              [(ngModel)]="initForm.hospedaje"
                              name="hospedaje"
-                             id="flexSwitchCheckChecked">
-                      <label class="form-text lh-1 text-black-50 mb-3" for="flexSwitchCheckChecked">Activar si cuenta con hospedaje propio para venir a la conferencia.</label>
+                             id="flexSwitchCheckChecked2">
+                      <label class="form-text lh-1 text-black-50 mb-3" for="flexSwitchCheckChecked2">Activar si cuenta con hospedaje propio para venir a la conferencia.</label>
                   </div>
 
               </div>
@@ -297,7 +288,9 @@
                   </div>
               </div>
           </div>-->
-
+          <div class="alert alert-info" role="alert" *ngIf="success">
+            El Ministro {{initForm.nombre}} ha sido Inscrito.
+          </div>
             <div class="row">
                 <div class="col">
                     <button type="submit"
@@ -308,77 +301,8 @@
                 </div>
             </div>
 
-
-
-<hr>
-            <!-- Campo de producto-->
-            <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Precio</label>
-              <div class="col-sm-9">
-                  <input type="number"
-                         class="form-control"
-                         [ngModel]="initForm.precio"
-                         name="precio"
-                         placeholder="Precio del producto"
-                         required
-                         min="0">
-                  <span class="form-text text-danger"
-                         *ngIf="precioValido()">
-                      El precio debe de ser 0 o mayor
-                  </span>
-              </div>
-          </div>
-
-          <!-- Campo de existencias-->
-          <div class="mb-3 row">
-              <label class="col-sm-3 col-form-label">Existencias</label>
-              <div class="col-sm-9">
-                  <input type="number"
-                         class="form-control"
-                         [ngModel]="initForm.existencias"
-                         name="existencias"
-                         customMin
-                         [minimo]="1"
-                         placeholder="Existencias del producto"
-                         required>
-              </div>
-          </div>
-
-
         </form>
 
     </div>
 </div>
-
-
-
-
-<div class="row">
-    <div class="col">
-
-        <span>Valid</span>
-        <pre>{{ miFormulario.valid }}</pre>
-
-        <span>Pristine</span>
-        <pre>{{ miFormulario.pristine }}</pre>
-
-        <span>Touched</span>
-        <pre>{{ miFormulario.touched }}</pre>
-
-        <span>Value</span>
-        <pre>{{ miFormulario.value | json }}</pre>
-
-        <span>CustomDirective</span>
-        <pre>{{ miFormulario.controls.existencias.errors | json }}</pre>
-
-    </div>
-</div>
-
-<div class="row">
-  <div class="col">
-
-      <span>initForm</span>
-      <pre>{{ initForm | json }}</pre>
-
-  </div>
-</div>
+<div class="container m4"><hr></div>
