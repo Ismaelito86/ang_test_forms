@@ -19,6 +19,7 @@ export class BasicosComponent implements OnInit {
   success = false;
   error = false;
   ciRegistrado=false;
+  errorMesage='';
 
   initForm: MinistroRequest = {
     nombre: '',
@@ -147,7 +148,9 @@ export class BasicosComponent implements OnInit {
       },
     (error)=>{
       console.log(error.error.message);
+      this.errorMesage = error.error.message;
       this.error=true;
+      this.susses=false;
     });
 
 
