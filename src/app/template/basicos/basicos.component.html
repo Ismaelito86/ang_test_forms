@@ -2,6 +2,9 @@
 <hr>
 
 <div class="row">
+  <div>
+    <button class="btn btn-danger float-end" (click)="cerrarSession()">Cerrar Session</button>
+  </div>
     <div class="col">
 
         <form (ngSubmit)="guardar()"
@@ -51,6 +54,10 @@
                       Debe introducir un # de identidad de 11 digitos
                   </span>
               </div>
+             <!--  <div row-sm-3>
+                <button class="btn btn-danger float-end" (click)="comprobar()">Comprobar CI</button>
+              </div>
+ -->
           </div>
 
           <div class="row mb-3">
@@ -362,10 +369,11 @@
           </div>-->
           <div class="alert alert-info" role="alert" *ngIf="success">
             <h4 class="alert-heading">Bien!</h4>
-            <p>El Ministro <span class="fw-bold">{{initForm.nombre}}</span> ha sido Inscrito Correctamente. Estos fueron los datos: ci:<span class="fw-bold">{{initForm.ci}}</span>, email:<span class="fw-bold">{{initForm.email}}</span>.</p>
-            <hr>
-            <p class="mb-0">Asistencia del Conyugue: {{initForm.matrimonio}}</p>
-            <p class="mb-0">Hospedaje: {{initForm.hospedaje}}</p>
+            <p>El Ministro ha sido Inscrito Correctamente. Gracias</p>
+          </div>
+          <div class="alert alert-info" role="danger" *ngIf="error">
+            <h4 class="alert-heading">ERROR!</h4>
+            <p>Algo ha salido mal. Revice los datos e inténtelo de nuevo. Si el error persiste espere unos minutos. Gracias</p>
           </div>
 
             <div class="row">

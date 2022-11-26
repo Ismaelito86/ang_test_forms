@@ -1,0 +1,75 @@
+<h2>Inscripciones AD 2023</h2>
+
+<div class="row">
+  <div class="col-sm-4">
+      <form (ngSubmit)="guardar()"
+            #miLoginFormulario="ngForm"
+            autocomplete="off">
+
+          <div>
+            <label class="col-sm-3 col-form-label fw-bold"></label>
+          </div>
+          <!-- Campo de Nombre -->
+          <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Email</label>
+
+              <div class="col-sm-9">
+                  <input type="email"
+                         class="form-control"
+                         [(ngModel)]="loginForm.email"
+                         name="email"
+                         placeholder="Introduzca el email"
+                         required
+                         minlength="3">
+
+                  <span class="form-text text-danger"
+                      *ngIf="emailValido()">
+                      Debe introducir el email correctamente
+                  </span>
+              </div>
+          </div>
+
+          <!-- Campo de Carnet id -->
+          <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label">Contraseña</label>
+
+            <div class="col-sm-9">
+                <input type="password"
+                       class="form-control"
+                       [(ngModel)]="loginForm.password"
+                       name="password"
+                       placeholder="Introducir contraseña"
+                       required
+                       minlength="4"
+                       >
+
+                <span class="form-text text-danger"
+                    *ngIf="passwordValido()">
+                    Debe introducir una contraseña.
+                </span>
+            </div>
+        </div>
+
+        <div class="alert alert-info" role="alert" *ngIf="success">
+          <!-- <h4 class="alert-heading">Bien!</h4>
+          <p>El Ministro <span class="fw-bold">{{initForm.nombre}}</span> ha sido Inscrito Correctamente. Estos fueron los datos: ci:<span class="fw-bold">{{initForm.ci}}</span>, email:<span class="fw-bold">{{initForm.email}}</span>.</p>
+          <hr>
+          <p class="mb-0">Asistencia del Conyugue: {{initForm.matrimonio}}</p>
+          <p class="mb-0">Hospedaje: {{initForm.hospedaje}}</p> -->
+        </div>
+
+          <div class="row">
+              <div class="col">
+                  <button type="submit"
+                          [disabled]="miLoginFormulario.invalid"
+                          class="btn btn-primary float-end">
+                      Guardar
+                  </button>
+              </div>
+          </div>
+
+      </form>
+
+
+    </div>
+  </div>
