@@ -14,6 +14,7 @@ export class AuthService {
 
   loginService(body:Login):Observable<LoginResponse>{
     const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json'
     });
     return this.http.post<LoginResponse>(`${URL}/auth/login`, body,{headers})
@@ -21,6 +22,7 @@ export class AuthService {
 
   sendForm(body:MinistroRequest):Observable<MinistroResponce>{
     const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json'
     });
     return this.http.post<MinistroResponce>(`${URL}/ministros`, body,{headers});
@@ -28,6 +30,7 @@ export class AuthService {
 
   checkCi(ci:string):Observable<any>{
     const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json'
     });
     return this.http.get<MinistroResponce>(`${URL}/ministros/ci/${ci}`,{headers});
