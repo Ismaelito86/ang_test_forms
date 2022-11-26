@@ -20,7 +20,7 @@ interface Favorito {
 })
 export class DinamicosComponent {
 
-  nuevoJuego: string = '';
+  nuevoJuego: string = 'ok game';
 
   persona: Persona = {
     nombre: 'Fernando',
