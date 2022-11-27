@@ -574,11 +574,4 @@ export const presbiteriosData: Presbiterios[] = [
     provinciaId: '4'
   },
 
-{
-    id : '96',
-    nombre: 'Habana del Este',
-    distritoId: '1',
-    provinciaId: '4'
-  },
-
 ];
