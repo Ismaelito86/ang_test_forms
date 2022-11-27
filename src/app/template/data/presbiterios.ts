@@ -3,7 +3,7 @@ import { Presbiterios } from '../interfaces';
 export const presbiteriosData: Presbiterios[] = [
   {
     id : '1',
-    nombre: 'Guane',
+    nombre: 'Guanes',
     distritoId: '1',
     provinciaId: '1'
   },
@@ -558,5 +558,27 @@ export const presbiteriosData: Presbiterios[] = [
     nombre: 'Bemasó',
     distritoId: '5',
     provinciaId: '13'
-  }
+  },
+
+{
+    id : '94',
+    nombre: '10 de Octubre',
+    distritoId: '1',
+    provinciaId: '4'
+  },
+
+{
+    id : '95',
+    nombre: 'Playas del Este',
+    distritoId: '1',
+    provinciaId: '4'
+  },
+
+{
+    id : '96',
+    nombre: 'Habana del Este',
+    distritoId: '1',
+    provinciaId: '4'
+  },
+
 ];
