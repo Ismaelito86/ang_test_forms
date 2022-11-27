@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://adconferencia.xyz/api'
+  baseUrl: 'https://24.199.93.120/api'
 };
 
 /*
