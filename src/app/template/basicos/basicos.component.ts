@@ -150,7 +150,7 @@ export class BasicosComponent implements OnInit {
       console.log(error.error.message);
       this.errorMesage = error.error.message;
       this.error=true;
-      this.sussess=false;
+      this.success=false;
     });
 
 
