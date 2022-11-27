@@ -141,9 +141,9 @@ export const presbiteriosData: Presbiterios[] = [
   },
   {
     id : '24',
-    nombre: 'Santo Domingo',
+    nombre: 'Santo Domingo Oeste',
     distritoId: '2',
-    provinciaId: ''
+    provinciaId: '6'
   },
   {
     id : '25',
@@ -572,6 +572,27 @@ export const presbiteriosData: Presbiterios[] = [
     nombre: 'Playas del Este',
     distritoId: '1',
     provinciaId: '4'
+  },
+
+  {
+    id : '96',
+    nombre: 'Santo Domingo Este',
+    distritoId: '2',
+    provinciaId: '6'
+  },
+
+  {
+    id : '97',
+    nombre: 'Vueltas',
+    distritoId: '2',
+    provinciaId: '6'
+  },
+
+  {
+    id : '98',
+    nombre: 'Palmira',
+    distritoId: '2',
+    provinciaId: '6'
   },
 
 ];
