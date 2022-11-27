@@ -595,4 +595,18 @@ export const presbiteriosData: Presbiterios[] = [
     provinciaId: '6'
   },
 
+  {
+    id : '99',
+    nombre: 'Camagüey',
+    distritoId: '3',
+    provinciaId: '10'
+  },
+
+  {
+    id : '100',
+    nombre: 'La Playa',
+    distritoId: '3',
+    provinciaId: '10'
+  },
+
 ];
