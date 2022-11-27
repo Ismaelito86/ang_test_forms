@@ -17,6 +17,7 @@ export class LoginpageComponent implements OnInit {
   @ViewChild('miLoginFormulario') miFormulario!: NgForm;
 
   success = false;
+  isLoading= false;
 
   loginForm: Login = {
     email: '',
@@ -42,12 +43,14 @@ export class LoginpageComponent implements OnInit {
 
   // guardar( miFormulario: NgForm ) {
   async guardar(){
+    this.isLoading=true;
     console.log(this.loginForm);
     this.auth.loginService(this.loginForm).subscribe(
       (res: LoginResponse)=> {
         console.log(res.token);
         localStorage.setItem('token',res.token);
         this.success=true;
+        this.isLoading=false;
         this.router.navigate(['/template/basicos']);
       },
     (error)=>console.log(error));

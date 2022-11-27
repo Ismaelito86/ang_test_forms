@@ -20,6 +20,7 @@ export class BasicosComponent implements OnInit {
   error = false;
   ciRegistrado=false;
   errorMesage='';
+  isLoading=false;
 
   initForm: MinistroRequest = {
     nombre: '',
@@ -116,12 +117,14 @@ export class BasicosComponent implements OnInit {
 
   // guardar( miFormulario: NgForm ) {
   async guardar(){
+    this.isLoading=true;
     this.formService.sendForm(this.initForm).subscribe(
       (res: MinistroResponce )=> {
         console.log(res.affectedRows);
         if (res.affectedRows===1) {
           this.success=true;
           this.error=false;
+          this.isLoading=false;
         } else {
           this.success=false;
           this.error=true;

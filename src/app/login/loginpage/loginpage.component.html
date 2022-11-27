@@ -57,7 +57,9 @@
           <p class="mb-0">Asistencia del Conyugue: {{initForm.matrimonio}}</p>
           <p class="mb-0">Hospedaje: {{initForm.hospedaje}}</p> -->
         </div>
-
+        <div class="spinner-border m-5" role="status" *ngIf="isLoading">
+          <span class="visually-hidden">Caegando...</span>
+        </div>
           <div class="row">
               <div class="col">
                   <button type="submit"
