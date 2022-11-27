@@ -17,5 +17,5 @@ export const provinciasData: Provincias[] = [
   {id: '14', nombre: 'Santiago de Cuba', distritoId: '5' },
   {id: '15', nombre: 'Guantánamo', distritoId: '5' },
   {id: '16', nombre: 'Isla de la Juventud', distritoId: '1'},
-  {id: '17', nombre: 'Baracoa', distritoId: '5' },
+  //{id: '17', nombre: 'Baracoa', distritoId: '5' },
 ];
