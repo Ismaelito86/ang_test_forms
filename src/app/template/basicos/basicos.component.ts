@@ -154,6 +154,7 @@ export class BasicosComponent implements OnInit {
       this.errorMesage = error.error.message;
       this.error=true;
       this.success=false;
+      this.isLoading=false;
     });
 
 
