@@ -23,7 +23,7 @@ export const presbiteriosData: Presbiterios[] = [
     id : '4',
     nombre: 'Bahía Honda',
     distritoId: '1',
-    provinciaId: '1'
+    provinciaId: '2'
   },
   {
     id : '5',
@@ -45,9 +45,9 @@ export const presbiteriosData: Presbiterios[] = [
   },
   {
     id : '8',
-    nombre: 'Boyeros',
+    nombre: 'San Antonio (Mayabeque)',
     distritoId: '1',
-    provinciaId: '4'
+    provinciaId: '3'
   },
   {
     id : '9',
@@ -440,12 +440,6 @@ export const presbiteriosData: Presbiterios[] = [
     provinciaId: '12'
   },
   {
-    id : '74',
-    nombre: 'Tunas Centro',
-    distritoId: '4',
-    provinciaId: '11'
-  },
-  {
     id : '75',
     nombre: 'Bayamo',
     distritoId: '5',
@@ -483,9 +477,15 @@ export const presbiteriosData: Presbiterios[] = [
   },
   {
     id : '81',
-    nombre: 'Palma Soriano',
+    nombre: 'Palma Soriano 1',
     distritoId: '5',
     provinciaId: '14'
+  },
+  {
+    id:'101',
+    nombre:'Palma Soriano 2',
+    distritoId:'5',
+    provinciaId:'14'
   },
   {
     id : '82',
@@ -555,9 +555,9 @@ export const presbiteriosData: Presbiterios[] = [
   },
   {
     id : '93',
-    nombre: 'Bemasó',
+    nombre: 'Mayari',
     distritoId: '5',
-    provinciaId: '13'
+    provinciaId: '14'
   },
 
 {
@@ -592,7 +592,7 @@ export const presbiteriosData: Presbiterios[] = [
     id : '98',
     nombre: 'Palmira',
     distritoId: '2',
-    provinciaId: '6'
+    provinciaId: '7'
   },
 
   {
