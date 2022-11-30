@@ -103,14 +103,14 @@
                          [(ngModel)]="initForm.celular"
                          name="celular"
                          placeholder="Introduzca su número de teléfono celular"
-                         
+                         required
                          >
-                <!--  <span class="form-text text-danger"
+                  <span class="form-text text-danger"
                       *ngIf="celularValido()">
                       Número de telefono incorrecto. Revise bien.
-                  </span>-->
+                  </span>
                   <span class="form-text">
-                      Ej. 52412536 | +5352412536
+                      Ej. 52412536 o +5352412536
                   </span>
 
               </div>
@@ -126,7 +126,7 @@
                          [(ngModel)]="initForm.email"
                          name="email"
                          placeholder="Introducir Email"
-                         
+                         required
                          >
 
                   <span class="form-text text-danger"
