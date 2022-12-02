@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { timer } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { Login, LoginResponse } from 'src/app/template/interfaces';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -47,13 +48,29 @@ export class LoginpageComponent implements OnInit {
     console.log(this.loginForm);
     this.auth.loginService(this.loginForm).subscribe(
       (res: LoginResponse)=> {
+        Swal.fire({
+          title:'Bien!',
+          text:'Credenciales Válidas.',
+          icon:'success',
+          buttonsStyling:true,
+          confirmButtonColor:'#0d6efd' //#dc3545
+        });
         console.log(res.token);
         localStorage.setItem('token',res.token);
         this.success=true;
         this.isLoading=false;
         this.router.navigate(['/template/basicos']);
       },
-    (error)=>console.log(error));
+    (error)=>{
+      console.log(error);
+      Swal.fire({
+        title:'Error!',
+        text:'Credenciales Inválidas.',
+        icon:'error',
+        buttonsStyling:true,
+        confirmButtonColor:'#dc3545'
+      });
+    });
 
 
     // console.log( this.miFormulario );

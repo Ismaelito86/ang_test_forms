@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription, timer } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import Swal from 'sweetalert2';
 import { presbiteriosData } from '../data/presbiterios';
 import { provinciasData } from '../data/provincias';
 import { MinistroRequest, MinistroResponce, Presbiterios, Provincias } from '../interfaces';
@@ -122,10 +123,26 @@ export class BasicosComponent implements OnInit {
       (res: MinistroResponce )=> {
         console.log(res.affectedRows);
         if (res.affectedRows===1) {
+          Swal.fire({
+            title:'Bien!',
+            text:'El Ministro ha sido Inscrito Correctamente. Gracias',
+            icon:'success',
+            buttonsStyling:true,
+            confirmButtonColor:'#0d6efd', //#dc3545
+          });
           this.success=true;
           this.error=false;
           this.isLoading=false;
         } else {
+          Swal.fire({
+            title:'Error!',
+            text:`Algo ha salido mal. ${this.errorMesage}
+            Revice los datos e inténtelo de nuevo. Si el error persiste espere unos minutos. Gracias.`,
+            icon:'error',
+            buttonsStyling:true,
+            denyButtonColor:'#dc3545',
+            timer:5500
+          });
           this.success=false;
           this.error=true;
         }
@@ -151,6 +168,15 @@ export class BasicosComponent implements OnInit {
       },
     (error)=>{
       console.log(error.error.message);
+      Swal.fire({
+        title:'Error!',
+        text:`Algo ha salido mal. ${this.errorMesage}
+        Revice los datos e inténtelo de nuevo. Si el error persiste espere unos minutos. Gracias.`,
+        icon:'error',
+        buttonsStyling:true,
+        denyButtonColor:'#dc3545',
+        timer:5500
+      });
       this.errorMesage = error.error.message;
       this.error=true;
       this.success=false;
