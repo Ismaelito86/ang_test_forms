@@ -30,8 +30,8 @@
   # Main
   --------------------------------------------------------------*/
   #main {
-	margin-top: 60px;
-	padding: 20px 30px;
+	margin-top: 30px;
+	/* padding: 20px 30px; */
 	transition: all 0.3s;
   }
   @media (max-width: 1199px) {

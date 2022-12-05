@@ -1,12 +1,10 @@
 <div id="main" class="main">
-
-  <div class="row-sm-3" *ngIf="(user.isAdmin || user.isEjecutivo)">
-
-    <!-- SELECT DISTRITO -->
-    <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label">Distrito</label>
-      <select class="form-select form-select-sm"
-              name="distrito" [(ngModel)]="distrito">
+  <h4>Listado de Inscritos</h4>
+  <div class="card-body" *ngIf="(user.isAdmin || user.isEjecutivo)">
+    <form class="row g-3">
+       <div class="col-md-4">
+        <select class="form-select form-select-sm"
+              name="distrito" [(ngModel)]="distrito"placeholder="Distrito">
         <option value="" selected>Seleccionar todos</option>
         <option value="1">Occidente</option>
         <option value="2">Centro Oeste</option>
@@ -14,31 +12,32 @@
         <option value="4">Oriente Norte</option>
         <option value="5">Oriente Sur</option>
       </select>
-    </div>
-    <!-- SELECT PROVINCIA -->
-    <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label">Provincia</label>
-      <select class="form-select form-select-sm"
-              name="provincia" [(ngModel)]="provincia">
+      </div>
+       <div class="col-md-4">
+        <select class="form-select form-select-sm"
+              name="provincia" [(ngModel)]="provincia" placeholder="Provincia">
               <option value="">Seleccionar todos</option>
               <option *ngFor="let provincia of provincias|filtrar:distrito" [ngValue]="provincia.id">
                 {{ provincia.nombre }}
               </option>
       </select>
-    </div>
-    <!-- SELECT PRESBITERIO -->
-    <div class="mb-3 row">
-      <label class="col-sm-3 col-form-label">Presbiterio</label>
-      <select class="form-select form-select-sm"
-              name="presbiterio"[(ngModel)]="presbiterio">
+      </div>
+       <div class="col-md-4">
+        <select class="form-select form-select-sm"
+              name="presbiterio"[(ngModel)]="presbiterio" placeholder="Presbiterio">
               <option value="">Seleccionar todos</option>
               <option *ngFor="let presbiterio of presbiterios|filtrar:provincia:'provincia'" [ngValue]="presbiterio.id">
                 {{ presbiterio.nombre }}
               </option>
       </select>
-    </div>
-
-  </div>
+      </div>
+        <div class="row g-2">
+         <div class="col-sm-12">
+          <input type="search" class="form-control form-control-sm" placeholder="Buscar nombre" [(ngModel)]="buscar" name="search">
+        </div>
+      </div>
+    </form>
+ </div>
 
 
   <div class="table-responsive">
@@ -65,7 +64,7 @@
       <span class="visually-hidden">Cargando...</span>
     </div>
     <tbody>
-      <tr *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio; let even = even; let odd = odd; "
+      <tr *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; "
       [ngClass]="{ odd: odd, even: even }"
       (click)="test(inscrito.nombre)">
         <td>
@@ -75,8 +74,8 @@
               <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" (click)="cancelarInscripcion(inscrito)">Cancelar Inscripción</a></li>
-              <li><a class="dropdown-item" href="#">Editar información</a></li>
+              <li style="cursor:pointer;"><a class="dropdown-item" (click)="cancelarInscripcion(inscrito)">Cancelar Inscripción</a></li>
+              <li style="cursor:pointer;"><a class="dropdown-item" href="#">Editar información</a></li>
               <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
             </ul>
           </div>

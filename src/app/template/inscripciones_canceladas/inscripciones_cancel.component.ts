@@ -19,6 +19,7 @@ export class InscripcionesCanceladasComponent implements OnInit{
   public distrito = '1';
   public provincia = '';
   public presbiterio = '';
+  public buscar = '';
   public lengthFilter = 0;
   user : LoginResponse;
 
