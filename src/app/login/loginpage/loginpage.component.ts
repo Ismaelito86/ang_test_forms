@@ -29,7 +29,7 @@ export class LoginpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem('xtoken');
   }
 
   passwordValido(): boolean {
@@ -58,7 +58,7 @@ export class LoginpageComponent implements OnInit {
         console.log(res.token);
         const {token,...user} = res;
         localStorage.setItem('user',JSON.stringify(user));
-        localStorage.setItem('token',res.token);
+        localStorage.setItem('xtoken',res.token);
         this.success=true;
         this.isLoading=false;
         this.router.navigate(['/template/basicos']);

@@ -12,7 +12,7 @@ export class LoginGuard implements CanActivate, CanLoad {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const validUser = localStorage.getItem('token');
+      const validUser = localStorage.getItem('xtoken');
       if (validUser !==null) {
         return true;
       } else {
@@ -24,7 +24,7 @@ export class LoginGuard implements CanActivate, CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const validUser = localStorage.getItem('token');
+      const validUser = localStorage.getItem('xtoken');
       if (validUser !==null) {
         return true;
       } else {
