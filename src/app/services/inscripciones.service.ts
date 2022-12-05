@@ -20,6 +20,13 @@ export class InscripcionesService {
     return this.http.get<InscripcionesResponse[]>(`${URL}/inscripciones`, {headers});
   }
 
+  getInscripcionesCanceladas(){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<InscripcionesResponse[]>(`${URL}/inscripciones/canceladas`, {headers});
+  }
+
   updateInscripcion(inscrito:InscripcionesResponse):Observable<updateInscripcionResponce>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

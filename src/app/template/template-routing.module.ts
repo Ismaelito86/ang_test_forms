@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BasicosComponent } from './basicos/basicos.component';
 import { DinamicosComponent } from './dinamicos/dinamicos.component';
+import { InscripcionesCanceladasComponent } from './inscripciones_canceladas/inscripciones_cancel.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
     children: [
       { path: 'basicos', component: BasicosComponent },
       { path: 'dinamicos', component: DinamicosComponent },
+      { path: 'inscripciones_canceladas', component: InscripcionesCanceladasComponent },
       { path: '**', redirectTo: 'basicos' },
     ]
   },
