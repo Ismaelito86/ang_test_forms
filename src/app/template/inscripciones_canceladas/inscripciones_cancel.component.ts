@@ -32,11 +32,11 @@ export class InscripcionesCanceladasComponent implements OnInit{
     this.presbiterio = this.user.presbiterioId || '';
   }
   ngOnInit(): void {
-    this.cargarInscripciones();
+    this.cargarInscripcionesCanceladas();
   }
 
-  cargarInscripciones(){
-    return this.inscripcionesService.getInscritos().subscribe({
+  cargarInscripcionesCanceladas(){
+    return this.inscripcionesService.getInscripcionesCanceladas().subscribe({
       next: (res:InscripcionesResponse[]) => {
         this.inscritos = res;
         console.log(res);
@@ -48,10 +48,10 @@ export class InscripcionesCanceladasComponent implements OnInit{
 
   test(name:string){console.log(name); }
 
-  cancelarInscripcion(inscrito:InscripcionesResponse){
+  reInscripcion(inscrito:InscripcionesResponse){
     Swal.fire({
       title: 'ATENCION!',
-      text: `Está seguro que desea cancelar la inscripcion de: ${inscrito.nombre}?`,
+      text: `Está seguro que desea reactivar la inscripcion de: ${inscrito.nombre}?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -59,11 +59,11 @@ export class InscripcionesCanceladasComponent implements OnInit{
       confirmButtonText: 'Si!'
     }).then((result) => {
       if (result.isConfirmed) {
-        inscrito.isInscrito = false;
+        inscrito.isInscrito = true;
         this.inscripcionesService.updateInscripcion(inscrito).subscribe({
           next: (res)=> {
             console.log(res);
-            this.router.navigateByUrl('/dinamicos');
+            this.router.navigateByUrl('template/dinamicos');
             Swal.fire(
               'OK!',
               res.message,

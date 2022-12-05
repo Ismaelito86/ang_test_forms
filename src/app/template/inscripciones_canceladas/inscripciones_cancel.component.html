@@ -75,8 +75,8 @@
               <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" (click)="cancelarInscripcion(inscrito)">Cancelar Inscripción</a></li>
-              <li><a class="dropdown-item" href="#">Editar información</a></li>
+              <li><a class="dropdown-item" (click)="reInscripcion(inscrito)">Reactivar Inscripción</a></li>
+              <li><a class="dropdown-item" href="#">Editar información </a></li>
               <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
             </ul>
           </div>
@@ -100,7 +100,7 @@
   </table>
 </div>
 <div>
-  <div class="alert alert-secondary alert-dismissible fade show" role="alert"> Total de Inscripciones: {{inscritos.length}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+  <div class="alert alert-secondary alert-dismissible fade show" role="alert"> Total de Inscripciones canceladas: {{inscritos.length}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
 </div>
 </div>
 
