@@ -56,6 +56,8 @@ export class LoginpageComponent implements OnInit {
           confirmButtonColor:'#0d6efd' //#dc3545
         });
         console.log(res.token);
+        const {token,...user} = res;
+        localStorage.setItem('user',JSON.stringify(user));
         localStorage.setItem('token',res.token);
         this.success=true;
         this.isLoading=false;

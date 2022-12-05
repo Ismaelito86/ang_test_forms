@@ -1,86 +1,106 @@
-<h2>Template: <small> Dinámicos </small></h2>
-<hr>
+<div id="main" class="main">
 
-<form (ngSubmit)="guardar()" autocomplete="off" #miFormulario="ngForm">
-   
-    <!-- Nombre -->
+  <div class="row-sm-3" *ngIf="(user.isAdmin || user.isEjecutivo)">
+
+    <!-- SELECT DISTRITO -->
     <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Nombre</label>
-        <div class="col-sm-9">
-            <input class="form-control"
-                   placeholder="Nombre de la persona"
-                   [ngModel]="persona.nombre"
-                   name="nombre"
-                   required>
-                <span class="form-text text-danger"
-                        *ngIf="miFormulario.controls.nombre?.errors && miFormulario.controls.nombre?.touched">
-                   Este campo es obligatorio
-               </span>
-        </div>
+      <label class="col-sm-3 col-form-label">Distrito</label>
+      <select class="form-select form-select-sm"
+              name="distrito" [(ngModel)]="distrito">
+        <option value="" selected>Seleccionar todos</option>
+        <option value="1">Occidente</option>
+        <option value="2">Centro Oeste</option>
+        <option value="3">Centro Este</option>
+        <option value="4">Oriente Norte</option>
+        <option value="5">Oriente Sur</option>
+      </select>
+    </div>
+    <!-- SELECT PROVINCIA -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Provincia</label>
+      <select class="form-select form-select-sm"
+              name="provincia" [(ngModel)]="provincia">
+              <option value="">Seleccionar todos</option>
+              <option *ngFor="let provincia of provincias|filtrar:distrito" [ngValue]="provincia.id">
+                {{ provincia.nombre }}
+              </option>
+      </select>
+    </div>
+    <!-- SELECT PRESBITERIO -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Presbiterio</label>
+      <select class="form-select form-select-sm"
+              name="presbiterio"[(ngModel)]="presbiterio">
+              <option value="">Seleccionar todos</option>
+              <option *ngFor="let presbiterio of presbiterios|filtrar:provincia:'provincia'" [ngValue]="presbiterio.id">
+                {{ presbiterio.nombre }}
+              </option>
+      </select>
     </div>
 
-    <!-- Agregar Favorito -->
-    <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Agregar</label>
-        <div class="col-sm-9">
+  </div>
 
-            <div class="input-group">
-                <input class="form-control"
-                       placeholder="Agregar favorito"
-                       [(ngModel)]="nuevoJuego"
-                       (keyup.enter)="agregarJuego()"
-                       name="nuevoJuego">
 
-                <button class="btn btn-outline-primary"
-                        type="button"
-                        (click)="agregarJuego()">
-                    Agregar
-                </button>
-            </div>
-        </div>
+  <div class="table-responsive">
+  <table class="table bodyTable table-hover">
+  <thead class="headTable">
+    <tr >
+      <th scope="col">accion</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Sex</th>
+      <th scope="col">CI</th>
+      <th scope="col">Celular</th>
+      <th scope="col">Email</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Función</th>
+      <th scope="col">Distrito</th>
+      <th scope="col">Provincia</th>
+      <th scope="col">Presbiterio</th>
+      <th scope="col">hospedaje</th>
+      <th scope="col">Confirmado</th>
+    </tr>
+    </thead>
+    <div class="spinner-border m-5" role="status" *ngIf="isLoading">
+      <span class="visually-hidden">Cargando...</span>
     </div>
-
-
-    <!-- Lista de Juegos Favoritos -->
-    <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
-
-            <div class="input-group mb-1"
-                 *ngFor="let juego of persona.favoritos; let i = index">
-                <input [(ngModel)]="juego.nombre"
-                       name="favorito_{{ i }}"
-                       class="form-control"
-                       required>
-
-                <button class="btn btn-outline-danger"
-                        type="button"
-                        (click)="eliminar(i)">
-                   Eliminar
-               </button>
-            </div>
-
-        </div>
-    </div>
-
-
-
-    <div class="row">
-        <div class="col-sm-12">
-            <button type="button"
-                    class="btn btn-primary float-end"
-                    [disabled]="miFormulario.invalid"
-                    (click)="guardar()">
-                Guardar
+    <tbody>
+      <tr *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio; let even = even; let odd = odd; "
+      [ngClass]="{ odd: odd, even: even }"
+      (click)="test(inscrito.nombre)">
+        <td>
+          <!-- <button type="button" class="btn btn-link"><i class="fa fa-trash"></i></button> -->
+          <div class="dropdown">
+            <button class="btn btn-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
             </button>
-        </div>
-    </div>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" (click)="cancelarInscripcion(inscrito)">Cancelar Inscripción</a></li>
+              <li><a class="dropdown-item" href="#">Editar información</a></li>
+              <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </div>
 
+        </td>
+        <td>{{inscrito.fecha | date:'d/M/yy'}}</td>
+        <td>{{inscrito.nombre}}</td>
+        <td>{{inscrito.genero}}</td>
+        <td>{{inscrito.ci}}</td>
+        <td>{{inscrito.celular}}</td>
+        <td>{{inscrito.email}}</td>
+        <td>{{inscrito.categoria}}</td>
+        <td>{{inscrito.funcion}}</td>
+        <td>{{inscrito.distrito}}</td>
+        <td>{{inscrito.provincia}}</td>
+        <td>{{inscrito.presbiterio}}</td>
+        <td>{{inscrito.hospedajeId}}</td>
+        <td>{{inscrito.isConfirmado | boolean}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <div class="alert alert-secondary alert-dismissible fade show" role="alert"> Total de Inscripciones: {{inscritos.length}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+</div>
+</div>
 
-</form>
-
-
-
-
-<span>Persona</span>
-<pre>{{ persona | json }}</pre>

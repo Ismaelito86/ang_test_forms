@@ -21,9 +21,9 @@ export interface Login {
   id?:string,
   username:string,
   isAdmin:boolean,
-  distritoId?:boolean,
-  provinciaId?:boolean,
-  presbiterioId?:boolean,
+  distritoId?:string,
+  provinciaId?:string,
+  presbiterioId?:string,
   isEjecutivo?:boolean,
   isPresbitero?:boolean,
   email:string,
@@ -55,3 +55,30 @@ export interface MinistroRequest{
     serverStatus:number,
     warningStatus:number,
   }
+
+  export interface InscripcionesResponse {
+    id:string,
+    fecha:string,
+    nombre:string,
+    genero:string,
+    ci:string,
+    celular:string,
+    email:string,
+    categoria:string,
+    funcion:string,
+    distrito:string,
+    distritoId?:string,
+    provincia:string,
+    provinciaId?:string,
+    presbiterio:string,
+    presbiterioId?:string,
+    hospedajeId:string,
+    isInscrito:boolean,
+    isConfirmado:boolean|string|number,
+    softdelete:boolean,
+    ministroId:string,
+  }
+export interface updateInscripcionResponce {
+  message: string,
+​  ok: true
+}

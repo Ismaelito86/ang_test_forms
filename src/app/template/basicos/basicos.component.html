@@ -1,10 +1,12 @@
-<h2>Conferencia AD Cuba 2023: Inscripciones</h2>
-<hr>
 
-<div class="row">
-  <div>
-    <button class="btn btn-danger float-end" (click)="cerrarSession()">Cerrar Session</button>
-  </div>
+<div id="main" class="row main">
+  <div class="row">
+  <h2>Inscripciones</h2>
+  <hr>
+  <!-- <div>
+  <button class="btn btn-danger float-end" (click)="cerrarSession()">Cerrar Session</button>
+  </div> -->
+</div>
     <div class="col">
 
         <form (ngSubmit)="guardar()"
@@ -133,6 +135,7 @@
                       *ngIf="emailValido()">
                       Formato de Email incorrecto. Debe contener @ y .
                   </span>
+                  <span class="form-text lh-1 text-black-50 mb-3">nota: Si no posee email, introducir la palabra 'No'</span>
               </div>
           </div>
 

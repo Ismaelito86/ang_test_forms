@@ -1,6 +1,7 @@
-
-
-<div class="row mt-5">
+<app-header *ngIf="!(_router.url === '/auth/login')" ></app-header>
+<app-sidemenu *ngIf="!(_router.url === '/auth/login')"></app-sidemenu>
+<!-- <div class="row mt-5"></div> -->
+<div class="row mt-5 main">
     <!-- <div class="col-4">
         <app-sidemenu></app-sidemenu>
     </div> -->

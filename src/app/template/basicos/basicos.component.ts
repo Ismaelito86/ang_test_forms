@@ -188,8 +188,5 @@ export class BasicosComponent implements OnInit {
     console.log('Posteo correcto');
 
   }
-  cerrarSession(){
-    localStorage.removeItem('token');
-    this.router.navigate(['/auth/login']);
-  }
+
 }

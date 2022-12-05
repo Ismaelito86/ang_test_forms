@@ -6,20 +6,28 @@ import { TemplateRoutingModule } from './template-routing.module';
 import { BasicosComponent } from './basicos/basicos.component';
 import { CustomMinDirective } from './directives/custom-min.directive';
 import { FiltrarPipe } from './pipes/filtar.pipe';
+import { DinamicosComponent } from './dinamicos/dinamicos.component';
+import { BooleanPipe } from './pipes/boolean.pipe';
+import { FiltrarInscritosPipe } from './pipes/filtrar-inscritos.pipe';
 
 
 @NgModule({
   declarations: [
     BasicosComponent,
-
+    DinamicosComponent,
     CustomMinDirective,
 
-    FiltrarPipe
+    FiltrarPipe,
+
+    BooleanPipe,
+
+    FiltrarInscritosPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
     TemplateRoutingModule
-  ]
+  ],
+  exports:[BooleanPipe]
 })
 export class TemplateModule { }

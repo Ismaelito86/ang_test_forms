@@ -18,4 +18,9 @@ interface MenuItem {
   ]
 })
 export class SidemenuComponent {
+  cerrarSession(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    //this.router.navigateByUrl('/auth/login');
+  }
 }
