@@ -1,3 +1,5 @@
+import { StringMap } from "@angular/compiler/src/compiler_facade_interface";
+
 export interface Provincias{
   id: string;
   nombre: string;
@@ -87,6 +89,7 @@ export interface hospedajeInscripciones {
   id:string,
   fecha:string,
   isInscrito:string,
+  hospedajeId:string,
   Id:string,
   nombre:string,
   ci:string,

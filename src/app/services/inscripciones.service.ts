@@ -40,6 +40,13 @@ export class InscripcionesService {
     });
     return this.http.get<hospedajeInscripciones[]>(`${URL}/inscripciones/hospedajes`, {headers});
   }
+
+  updateHospedaje(inscrito:hospedajeInscripciones){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.patch<any>(`${URL}/inscripciones/hospedajes/${inscrito.id}`, inscrito,{headers})
+  }
 /*   loginService(body:Login):Observable<LoginResponse>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

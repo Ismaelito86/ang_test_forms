@@ -71,7 +71,7 @@
               </div>
               </div>
               <li class="nav-heading" style="font-weight: bold;">Localidad</li>
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <div>
                   <span>{{inscrito.distrito}}</span>
                 </div>
@@ -83,15 +83,19 @@
                 <div>
                   <span>{{inscrito.presbiterio}}</span>
                 <div>
-                  <span style="text-overflow:clip;">{{inscrito.hospedajeId}}</span>
+                  <hr style="margin: 0px;">
+                  <span style="text-overflow:clip;"><strong>reserva: </strong>{{inscrito.hospedajeId}}</span>
                 </div>
 
                 </div>
               </div>
-              <div class="col-sm-2">
-                <div>
-                  <button class="btn btn-secondary btn-sm" type="button">Asignar</button>
+              <div class="col-sm-4">
+                <div class="row-sm-4">
+                  <button class="btn btn-secondary btn-sm" type="button" (click)="updateHospedajes(inscrito)">Asignar</button>
+                  <button class="btn btn-danger btn-sm" type="button" style="margin-left: 5px;" (click)="quitarHospedajes(inscrito)"><i class="fa fa-trash" aria-hidden="true">Quitar</i></button>
                 </div>
+                <!-- <div>
+                </div> -->
               </div>
             </div>
 
