@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { InscripcionesResponse, updateInscripcionResponce } from '../template/interfaces';
+import { hospedajeInscripciones, InscripcionesResponse, updateInscripcionResponce } from '../template/interfaces';
 
 
 const URL = environment.baseUrl;
@@ -34,6 +34,12 @@ export class InscripcionesService {
     return this.http.patch<updateInscripcionResponce>(`${URL}/inscripciones/${inscrito.id}`, inscrito,{headers})
   }
 
+  getHospedajes(){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<hospedajeInscripciones[]>(`${URL}/inscripciones/hospedajes`, {headers});
+  }
 /*   loginService(body:Login):Observable<LoginResponse>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'

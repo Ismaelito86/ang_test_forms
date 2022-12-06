@@ -6,8 +6,8 @@ import { InscripcionesResponse } from '../interfaces';
 })
 export class BuscarNombresPipe implements PipeTransform {
 
-  transform(value: InscripcionesResponse[], query:string): InscripcionesResponse[]{
-    let result:InscripcionesResponse[] =[];
+  transform(value: any[], query:string): any[]{
+    let result:any[] =[];
 
     if (query ===""||query ===null||query ===undefined) {
       return value;

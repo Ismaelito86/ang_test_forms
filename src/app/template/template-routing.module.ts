@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BasicosComponent } from './basicos/basicos.component';
 import { DinamicosComponent } from './dinamicos/dinamicos.component';
 import { InscripcionesCanceladasComponent } from './inscripciones_canceladas/inscripciones_cancel.component';
+import { HospedajesComponent } from './hospedajes/hospedajes.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       { path: 'basicos', component: BasicosComponent },
       { path: 'dinamicos', component: DinamicosComponent },
       { path: 'inscripciones_canceladas', component: InscripcionesCanceladasComponent },
+      { path: 'hospedajes', component: HospedajesComponent },
       { path: '**', redirectTo: 'basicos' },
     ]
   },

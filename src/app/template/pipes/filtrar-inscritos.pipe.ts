@@ -6,9 +6,9 @@ import { InscripcionesResponse } from '../interfaces';
 })
 export class FiltrarInscritosPipe implements PipeTransform {
 
-  transform(value: InscripcionesResponse[], distritoId:string, provinciaId?:string, presbiterioId?:string): InscripcionesResponse[] {
+  transform(value: any[], distritoId:string, provinciaId?:string, presbiterioId?:string): any[] {
     console.log(distritoId);
-    let result:InscripcionesResponse[] =[];
+    let result:any[] =[];
 
     if (presbiterioId ==="" && provinciaId==="" && distritoId ==="") {
       return value.sort((a, b) => (a.distritoId! > b.distritoId!) ? 1 : -1);;

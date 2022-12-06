@@ -82,3 +82,29 @@ export interface updateInscripcionResponce {
   message: string,
 ​  ok: true
 }
+
+export interface hospedajeInscripciones {
+  id:string,
+  fecha:string,
+  isInscrito:string,
+  Id:string,
+  nombre:string,
+  ci:string,
+  genero:string,
+  email:string,
+  celular:string,
+  categoria:string,
+  distrito:string,
+  provincia:string,
+  presbiterio:string,
+  c_nombre:string,
+  c_ci:string,
+  c_genero:string,
+  c_email:string,
+  c_celular:string,
+  c_categoria:string,
+  c_Id:string,
+  distritoId:string,
+  provinciaId:string,
+  presbiterioId:string,
+}

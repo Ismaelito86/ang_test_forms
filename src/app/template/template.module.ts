@@ -11,6 +11,7 @@ import { BooleanPipe } from './pipes/boolean.pipe';
 import { FiltrarInscritosPipe } from './pipes/filtrar-inscritos.pipe';
 import { InscripcionesCanceladasComponent } from './inscripciones_canceladas/inscripciones_cancel.component';
 import { BuscarNombresPipe } from './pipes/buscar-nombres.pipe';
+import { HospedajesComponent } from './hospedajes/hospedajes.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { BuscarNombresPipe } from './pipes/buscar-nombres.pipe';
     DinamicosComponent,
     CustomMinDirective,
     InscripcionesCanceladasComponent,
+    HospedajesComponent,
     FiltrarPipe,
 
     BooleanPipe,
