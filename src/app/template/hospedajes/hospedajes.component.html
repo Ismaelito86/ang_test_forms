@@ -39,88 +39,170 @@
       </div>
     </form>
  </div>
+     <div class="form-check form-check-inline">
+         <input class="form-check-input"
+                type="radio"
+                default
+                value="0"
+                [(ngModel)]="estadoCivil"
+                name="radioEstado"
+                id="radioMatrimonio"
+                required>
+         <label class="form-check-label" for="radioMatrimonio">
+           Sin Conyugue
+         </label>
+     </div>
+     <div class="form-check form-check-inline">
+         <input class="form-check-input"
+                type="radio"
+                value="1"
+                [(ngModel)]="estadoCivil"
+                name="radioEstado"
+                id="radioSinConyugue"
+                required>
+         <label class="form-check-label" for="radioSinConyugue">
+          Matrimonio
+         </label>
+</div>
 
-  <div class="col-lg">
-    <div class="card" *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; "
-      [ngClass]="{ odd: odd, even: even }">
-        <div class="card-body container-fluid">
-            <div class="row g-8 bodyTable">
-              <li class="nav-heading" style="font-weight: bold;">Matrimonio</li>
-              <div class="col-sm-6">
-                <div>
-                  <span style="text-overflow:clip;">{{inscrito.nombre}}</span>
+<ng-container *ngIf="estadoCivil=='0' else matrimonios">
+  <div class="table-responsive">
+    <table class="table table-striped table-sm bodyTable">
+    <thead class="headTable">
+      <tr >
+        <th scope="col">accion</th>
+        <th scope="col">fecha</th>
+        <th scope="col">nombre</th>
+        <th scope="col">genero</th>
+        <th scope="col">hospedaje</th>
+        <th scope="col">ci</th>
+        <th scope="col">email</th>
+        <th scope="col">celular</th>
+        <th scope="col">distrito</th>
+        <th scope="col">provincia</th>
+        <th scope="col">presbiterio</th>
+      </tr>
+      </thead>
+      <div class="spinner-border m-5" role="status" *ngIf="isLoading">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <tbody>
+        <tr *ngFor="let inscrito of inscritosSinConyugue|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; ">
+          <td>
+            <!-- <button type="button" class="btn btn-link"><i class="fa fa-trash"></i></button> -->
+            <div class="dropdown">
+              <button class="btn btn-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li style="cursor:pointer;"><a class="dropdown-item" (click)="updateHospedajes(inscrito)">Asignar hospedaje</a></li>
+                <li style="cursor:pointer;"><a class="dropdown-item" (click)="quitarHospedajes(inscrito)">Eliminar hospedaje</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              </ul>
+            </div>
+
+          </td>
+          <td>{{inscrito.fecha | date:'d/M/yy'}}</td>
+          <td>{{inscrito.nombre}}</td>
+          <td>{{inscrito.genero}}</td>
+          <td>{{inscrito.hospedajeId}}</td>
+          <td>{{inscrito.ci}}</td>
+          <td>{{inscrito.email}}</td>
+          <td>{{inscrito.celular}}</td>
+          <td>{{inscrito.distrito}}</td>
+          <td>{{inscrito.provincia}}</td>
+          <td>{{inscrito.presbiterio}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+
+  <ng-template #matrimonios>
+    <div class="col-lg">
+      <div class="card" *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; "
+        [ngClass]="{ odd: odd, even: even }">
+          <div class="card-body container-fluid">
+              <div class="row g-8 bodyTable">
+                <li class="nav-heading" style="font-weight: bold;">Matrimonio</li>
+                <div class="col-sm-6">
+                  <div>
+                    <span style="text-overflow:clip;">{{inscrito.nombre}}</span>
+                  </div>
+                  <div>
+                    <span style="text-overflow:clip;">{{inscrito.c_nombre}}</span>
+                  </div>
                 </div>
-                <div>
-                  <span style="text-overflow:clip;">{{inscrito.c_nombre}}</span>
+                <div class="col-sm-2">
+                  <div>
+                    <span >{{inscrito.celular}}</span>
+                  </div>
+                  <div>
+                    <span>{{inscrito.c_celular}}</span>
+                  </div>
                 </div>
+                <div class="col-sm-4">
+                  <div>
+                      <span>{{inscrito.email}}</span>
+                  </div>
+                  <div>
+                    <span>{{inscrito.c_email}}</span>
+                </div>
+                </div>
+                <li class="nav-heading" style="font-weight: bold;">Localidad</li>
+                <div class="col-sm-4">
+                  <div>
+                    <span>{{inscrito.distrito}}</span>
+                  </div>
+                  <div>
+                    <span>{{inscrito.provincia}}</span>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div>
+                    <span>{{inscrito.presbiterio}}</span>
+                  <div>
+                    <hr style="margin: 0px;">
+                    <span style="text-overflow:clip;"><strong>reserva: </strong>{{inscrito.hospedajeId}}</span>
+                  </div>
+
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="row-sm-4">
+                    <button class="btn btn-secondary btn-sm" type="button" (click)="updateHospedajes(inscrito)">Asignar</button>
+                    <button class="btn btn-danger btn-sm" type="button" style="margin-left: 5px;" (click)="quitarHospedajes(inscrito)"><i class="fa fa-trash" aria-hidden="true">Quitar</i></button>
+                  </div>
+                  <!-- <div>
+                  </div> -->
+                </div>
+              </div>
+
+              <!-- <h6 class="card-title">Default Card</h6>
+              <div class="col-sm-2">
+                <span>{{inscrito.nombre}}</span>
               </div>
               <div class="col-sm-2">
-                <div>
-                  <span >{{inscrito.celular}}</span>
-                </div>
-                <div>
-                  <span>{{inscrito.c_celular}}</span>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div>
-                    <span>{{inscrito.email}}</span>
-                </div>
-                <div>
-                  <span>{{inscrito.c_email}}</span>
-              </div>
-              </div>
-              <li class="nav-heading" style="font-weight: bold;">Localidad</li>
-              <div class="col-sm-4">
-                <div>
-                  <span>{{inscrito.distrito}}</span>
-                </div>
-                <div>
-                  <span>{{inscrito.provincia}}</span>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div>
-                  <span>{{inscrito.presbiterio}}</span>
-                <div>
-                  <hr style="margin: 0px;">
-                  <span style="text-overflow:clip;"><strong>reserva: </strong>{{inscrito.hospedajeId}}</span>
-                </div>
+                <span>{{inscrito.c_nombre}}</span>
+               </div>
 
-                </div>
+            <div class="row-sm-4">
+              <h6 class="card-title">Distrito</h6>
+              <div class="col-sm">
+                {{inscrito.distrito}}
               </div>
-              <div class="col-sm-4">
-                <div class="row-sm-4">
-                  <button class="btn btn-secondary btn-sm" type="button" (click)="updateHospedajes(inscrito)">Asignar</button>
-                  <button class="btn btn-danger btn-sm" type="button" style="margin-left: 5px;" (click)="quitarHospedajes(inscrito)"><i class="fa fa-trash" aria-hidden="true">Quitar</i></button>
-                </div>
-                <!-- <div>
-                </div> -->
-              </div>
+              <div class="col-sm">
+                {{inscrito.presbiterio}}
+               </div>
+            </div> -->
+
             </div>
+       </div>
 
-            <!-- <h6 class="card-title">Default Card</h6>
-            <div class="col-sm-2">
-              <span>{{inscrito.nombre}}</span>
-            </div>
-            <div class="col-sm-2">
-              <span>{{inscrito.c_nombre}}</span>
-             </div>
+    </div>
+  </ng-template>
 
-          <div class="row-sm-4">
-            <h6 class="card-title">Distrito</h6>
-            <div class="col-sm">
-              {{inscrito.distrito}}
-            </div>
-            <div class="col-sm">
-              {{inscrito.presbiterio}}
-             </div>
-          </div> -->
-
-          </div>
-     </div>
-
-  </div>
   <!-- <div class="table-responsive">
   <table class="table bodyTable table-hover">
   <thead class="headTable">

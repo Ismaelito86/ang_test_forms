@@ -85,7 +85,7 @@ export interface updateInscripcionResponce {
 ​  ok: true
 }
 
-export interface hospedajeInscripciones {
+export interface hospedajesMatrimonios {
   id:string,
   fecha:string,
   isInscrito:string,
@@ -100,13 +100,37 @@ export interface hospedajeInscripciones {
   distrito:string,
   provincia:string,
   presbiterio:string,
-  c_nombre:string,
-  c_ci:string,
-  c_genero:string,
-  c_email:string,
-  c_celular:string,
-  c_categoria:string,
-  c_Id:string,
+  matrimonio:string,
+  c_nombre?:string,
+  c_ci?:string,
+  c_genero?:string,
+  c_email?:string,
+  c_celular?:string,
+  c_categoria?:string,
+  c_Id?:string,
+  distritoId:string,
+  provinciaId:string,
+  presbiterioId:string,
+}
+
+export interface hospedajesSinConyugue
+{
+  id:string,
+  fecha:string,
+  isInscrito:string,
+  hospedajeId:string,
+  Id:string,
+  nombre:string,
+  ci:string,
+  genero:string,
+  email:string,
+  celular:string,
+  matrimonio:string,
+  hospedaje:string,
+  categoria:string,
+  distrito:string,
+  provincia:string,
+  presbiterio:string,
   distritoId:string,
   provinciaId:string,
   presbiterioId:string,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { hospedajeInscripciones, InscripcionesResponse, updateInscripcionResponce } from '../template/interfaces';
+import { hospedajesMatrimonios, hospedajesSinConyugue, InscripcionesResponse, updateInscripcionResponce } from '../template/interfaces';
 
 
 const URL = environment.baseUrl;
@@ -38,10 +38,17 @@ export class InscripcionesService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.get<hospedajeInscripciones[]>(`${URL}/inscripciones/hospedajes`, {headers});
+    return this.http.get<hospedajesMatrimonios[]>(`${URL}/inscripciones/hospedajes_matrimonios`, {headers});
   }
 
-  updateHospedaje(inscrito:hospedajeInscripciones){
+  getHospedajesSinConyugue(){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get<hospedajesSinConyugue[]>(`${URL}/inscripciones/hospedajes`, {headers});
+  }
+
+  updateHospedaje(inscrito:hospedajesMatrimonios){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
