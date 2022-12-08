@@ -12,6 +12,7 @@ import { FiltrarInscritosPipe } from './pipes/filtrar-inscritos.pipe';
 import { InscripcionesCanceladasComponent } from './inscripciones_canceladas/inscripciones_cancel.component';
 import { BuscarNombresPipe } from './pipes/buscar-nombres.pipe';
 import { HospedajesComponent } from './hospedajes/hospedajes.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { HospedajesComponent } from './hospedajes/hospedajes.component';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     TemplateRoutingModule
   ],
   exports:[BooleanPipe]

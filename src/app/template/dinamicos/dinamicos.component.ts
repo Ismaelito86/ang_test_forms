@@ -48,8 +48,6 @@ export class DinamicosComponent implements OnInit{
     });
   }
 
-  test(name:string){console.log(name); }
-
   cancelarInscripcion(inscrito:InscripcionesResponse){
     Swal.fire({
       title: 'ATENCION!',
@@ -91,5 +89,8 @@ export class DinamicosComponent implements OnInit{
     })
   }
 
+  editarInfoInscrito(inscrito:InscripcionesResponse){
+    this.inscripcionesService.emitInscritoToUpdate.emit(inscrito);
+  }
 
 }

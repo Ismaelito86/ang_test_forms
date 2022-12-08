@@ -33,6 +33,7 @@ export interface Login {
 }
 
 export interface MinistroRequest{
+  id?:string,
   nombre:string,
   ci:string,
   genero:string,
@@ -67,6 +68,11 @@ export interface MinistroRequest{
     celular:string,
     email:string,
     categoria:string,
+    categorias?:string,
+    funciones?:string,
+    iglesia?:string,
+    matrimonio?:boolean,
+    hospedaje?:boolean,
     funcion:string,
     distrito:string,
     distritoId?:string,
@@ -134,4 +140,9 @@ export interface hospedajesSinConyugue
   distritoId:string,
   provinciaId:string,
   presbiterioId:string,
+}
+
+export interface updateMinistroResponse {
+  ok:boolean,
+  message:string
 }

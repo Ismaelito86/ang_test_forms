@@ -76,8 +76,8 @@
             </button>
             <ul class="dropdown-menu">
               <li style="cursor:pointer;"><a class="dropdown-item" (click)="reInscripcion(inscrito)">Reactivar Inscripción</a></li>
-              <li style="cursor:pointer;"><a class="dropdown-item" href="#">Editar información </a></li>
-              <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              <li style="cursor:pointer;"><a class="dropdown-item" [routerLink]="['template/basicos']" [queryParams]="inscrito">Editar información </a></li>
+
             </ul>
           </div>
 

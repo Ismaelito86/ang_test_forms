@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Login, LoginResponse, MinistroRequest, MinistroResponce } from '../template/interfaces';
+import { Login, LoginResponse, MinistroRequest, MinistroResponce, updateMinistroResponse } from '../template/interfaces';
 
 const URL = environment.baseUrl;
 @Injectable({
@@ -24,6 +24,13 @@ export class AuthService {
       'Content-Type': 'application/json'
     });
     return this.http.post<MinistroResponce>(`${URL}/ministros`, body,{headers});
+  }
+
+  updateForm(body:MinistroRequest){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.patch<updateMinistroResponse>(`${URL}/ministros/${body.id}`, body,{headers});
   }
 
   checkCi(ci:string):Observable<any>{
