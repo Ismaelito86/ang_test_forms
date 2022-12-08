@@ -21,6 +21,7 @@ export class DinamicosComponent implements OnInit{
   public presbiterio = '';
   public buscar = '';
   public lengthFilter = 0;
+  token:string ='';
 
   user : LoginResponse;
 
@@ -29,6 +30,7 @@ export class DinamicosComponent implements OnInit{
 
   constructor(private inscripcionesService: InscripcionesService, public router: Router) {
     this.user = JSON.parse(localStorage.getItem('user')!);
+    this.token = localStorage.getItem('xtoken')!;
     this.distrito = this.user.distritoId!;
     this.provincia = this.user.provinciaId || '';
     this.presbiterio = this.user.presbiterioId || '';
@@ -38,7 +40,7 @@ export class DinamicosComponent implements OnInit{
   }
 
   cargarInscripciones(){
-    return this.inscripcionesService.getInscritos().subscribe({
+    return this.inscripcionesService.getInscritos(this.token).subscribe({
       next: (res:InscripcionesResponse[]) => {
         this.inscritos = res;
         console.log(res);
@@ -60,7 +62,7 @@ export class DinamicosComponent implements OnInit{
     }).then((result) => {
       if (result.isConfirmed) {
         inscrito.isInscrito = false;
-        this.inscripcionesService.updateInscripcion(inscrito).subscribe({
+        this.inscripcionesService.updateInscripcion(inscrito, this.token).subscribe({
           next: (res)=> {
             console.log(res);
             this.router.navigateByUrl('/dinamicos');
@@ -87,10 +89,6 @@ export class DinamicosComponent implements OnInit{
         ) */
       }
     })
-  }
-
-  editarInfoInscrito(inscrito:InscripcionesResponse){
-    this.inscripcionesService.emitInscritoToUpdate.emit(inscrito);
   }
 
 }

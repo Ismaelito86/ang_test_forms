@@ -19,23 +19,26 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${URL}/auth/login`, body,{headers})
   }
 
-  sendForm(body:MinistroRequest):Observable<MinistroResponce>{
+  sendForm(body:MinistroRequest, token:string):Observable<MinistroResponce>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.post<MinistroResponce>(`${URL}/ministros`, body,{headers});
   }
 
-  updateForm(body:MinistroRequest){
+  updateForm(body:MinistroRequest, token:string){
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.patch<updateMinistroResponse>(`${URL}/ministros/${body.id}`, body,{headers});
   }
 
-  checkCi(ci:string):Observable<any>{
+  checkCi(ci:string, token:string):Observable<any>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.get<MinistroResponce>(`${URL}/ministros/ci/${ci}`,{headers});
   }

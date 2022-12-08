@@ -22,12 +22,14 @@ export class InscripcionesCanceladasComponent implements OnInit{
   public buscar = '';
   public lengthFilter = 0;
   user : LoginResponse;
+  token = '';
 
   provincias: Provincias[] = provinciasData;
   presbiterios: Presbiterios[] = presbiteriosData;
 
   constructor(private inscripcionesService: InscripcionesService, public router: Router) {
     this.user = JSON.parse(localStorage.getItem('user')!);
+    this.token = localStorage.getItem('xtoken')!;
     this.distrito = this.user.distritoId!;
     this.provincia = this.user.provinciaId || '';
     this.presbiterio = this.user.presbiterioId || '';
@@ -37,7 +39,7 @@ export class InscripcionesCanceladasComponent implements OnInit{
   }
 
   cargarInscripcionesCanceladas(){
-    return this.inscripcionesService.getInscripcionesCanceladas().subscribe({
+    return this.inscripcionesService.getInscripcionesCanceladas(this.token).subscribe({
       next: (res:InscripcionesResponse[]) => {
         this.inscritos = res;
         console.log(res);
@@ -61,7 +63,7 @@ export class InscripcionesCanceladasComponent implements OnInit{
     }).then((result) => {
       if (result.isConfirmed) {
         inscrito.isInscrito = true;
-        this.inscripcionesService.updateInscripcion(inscrito).subscribe({
+        this.inscripcionesService.updateInscripcion(inscrito, this.token).subscribe({
           next: (res)=> {
             console.log(res);
             this.router.navigateByUrl('template/dinamicos');

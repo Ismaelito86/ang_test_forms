@@ -23,6 +23,7 @@ export class BasicosComponent implements OnInit {
   errorMesage='';
   isLoading=false;
   create=true;
+  token:string = '';
 
   initForm: MinistroRequest = {
     id:'',
@@ -53,6 +54,7 @@ export class BasicosComponent implements OnInit {
 
 
   ngOnInit() {
+    this.token = localStorage.getItem('xtoken')!;
     this.routeParam.queryParams.subscribe({
       next: params => {
         if (params.ci) {
@@ -113,7 +115,7 @@ export class BasicosComponent implements OnInit {
   // guardar( miFormulario: NgForm ) {
   async guardar(){
     this.isLoading=true;
-    this.formService.sendForm(this.initForm).subscribe(
+    this.formService.sendForm(this.initForm, this.token).subscribe(
       (res: MinistroResponce )=> {
         console.log(res.affectedRows);
         if (res.affectedRows===1) {
@@ -185,7 +187,7 @@ export class BasicosComponent implements OnInit {
 
   async update(){
     this.isLoading=true;
-    this.formService.updateForm(this.initForm).subscribe(
+    this.formService.updateForm(this.initForm, this.token).subscribe(
       (res: updateMinistroResponse)=> {
         console.log(res);
         if (res.ok) {

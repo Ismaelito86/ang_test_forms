@@ -10,47 +10,53 @@ const URL = environment.baseUrl;
   providedIn: 'root'
 })
 export class InscripcionesService {
-@Output() emitInscritoToUpdate: EventEmitter<any> = new EventEmitter()
+
   constructor(private http:HttpClient) { }
 
-  getInscritos(){
+  getInscritos(token:string){
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.get<InscripcionesResponse[]>(`${URL}/inscripciones`, {headers});
   }
 
-  getInscripcionesCanceladas(){
+  getInscripcionesCanceladas(token:string){
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.get<InscripcionesResponse[]>(`${URL}/inscripciones/canceladas`, {headers});
   }
 
-  updateInscripcion(inscrito:InscripcionesResponse):Observable<updateInscripcionResponce>{
+  updateInscripcion(inscrito:InscripcionesResponse, token:string):Observable<updateInscripcionResponce>{
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.patch<updateInscripcionResponce>(`${URL}/inscripciones/${inscrito.id}`, inscrito,{headers})
   }
 
-  getHospedajes(){
+  getHospedajes(token:string){
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.get<hospedajesMatrimonios[]>(`${URL}/inscripciones/hospedajes_matrimonios`, {headers});
   }
 
-  getHospedajesSinConyugue(){
+  getHospedajesSinConyugue(token:string){
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.get<hospedajesSinConyugue[]>(`${URL}/inscripciones/hospedajes`, {headers});
   }
 
-  updateHospedaje(inscrito:hospedajesMatrimonios){
+  updateHospedaje(inscrito:hospedajesMatrimonios, token:string){
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
     });
     return this.http.patch<any>(`${URL}/inscripciones/hospedajes/${inscrito.id}`, inscrito,{headers})
   }

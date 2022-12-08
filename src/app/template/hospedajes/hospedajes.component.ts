@@ -23,6 +23,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
   public buscar = '';
   public estadoCivil = '0';
   public lengthFilter = 0;
+  token = '';
 
   suscription$: Subscription = new Subscription();
 
@@ -33,6 +34,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
 
   constructor(private inscripcionesService: InscripcionesService, public router: Router) {
     this.user = JSON.parse(localStorage.getItem('user')!);
+    this.token = localStorage.getItem('xtoken')!;
     this.distrito = this.user.distritoId!;
     this.provincia = this.user.provinciaId || '';
     this.presbiterio = this.user.presbiterioId || '';
@@ -48,7 +50,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
     if (this.inscritos.length > 0) {
       this.inscritos;
     } else {
-      this.inscripcionesService.getHospedajes().subscribe({
+      this.inscripcionesService.getHospedajes(this.token).subscribe({
         next: (res:hospedajesMatrimonios[]) => {
           this.inscritos = res;
           console.log(res);
@@ -63,7 +65,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
     if (this.inscritosSinConyugue.length > 0) {
       this.inscritosSinConyugue;
     } else {
-      this.inscripcionesService.getHospedajesSinConyugue().subscribe({
+      this.inscripcionesService.getHospedajesSinConyugue(this.token).subscribe({
         next: (res: hospedajesSinConyugue[]) => {
           this.inscritosSinConyugue = res;
           console.log(res);
@@ -88,7 +90,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
     if (text) {
       console.log(text);
       inscrito.hospedajeId = text;
-      this.inscripcionesService.updateHospedaje(inscrito).subscribe({
+      this.inscripcionesService.updateHospedaje(inscrito, this.token).subscribe({
         next: (res) => {
           console.log(res);
           this.isLoading = false;
@@ -112,7 +114,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
   quitarHospedajes(inscrito: hospedajesMatrimonios | hospedajesSinConyugue){
 
       inscrito.hospedajeId = '';
-      this.inscripcionesService.updateHospedaje(inscrito).subscribe({
+      this.inscripcionesService.updateHospedaje(inscrito, this.token).subscribe({
         next: (res) => {
           console.log(res);
           this.isLoading = false;
