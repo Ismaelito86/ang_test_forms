@@ -100,7 +100,7 @@
   </table>
 </div>
 <div>
-  <div class="alert alert-secondary alert-dismissible fade show" role="alert"> Total de Inscripciones canceladas: {{inscritos.length}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
+  <div class="alert alert-secondary alert-dismissible fade show" role="alert"> Total de Inscripciones canceladas: {{inscritos | filtrarInscritos:distrito:provincia:presbiterio | buscarNombres:buscar | arrayLength}} / {{inscritos.length}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
 </div>
 </div>
 

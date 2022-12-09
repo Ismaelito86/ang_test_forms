@@ -82,11 +82,6 @@ export class DinamicosComponent implements OnInit{
             )
           },
         });
-        /* Swal.fire(
-          'Cancelado!',
-          'La inscripción del ministro ha sido efectuada correctamente.',
-          'success'
-        ) */
       }
     })
   }

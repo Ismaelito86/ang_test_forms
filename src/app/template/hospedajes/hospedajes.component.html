@@ -89,7 +89,7 @@
       <tbody>
         <tr *ngFor="let inscrito of inscritosSinConyugue|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; ">
           <td>
-            <!-- <button type="button" class="btn btn-link"><i class="fa fa-trash"></i></button> -->
+
             <div class="dropdown">
               <button class="btn btn-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
@@ -97,7 +97,7 @@
               <ul class="dropdown-menu">
                 <li style="cursor:pointer;"><a class="dropdown-item" (click)="updateHospedajes(inscrito)">Asignar hospedaje</a></li>
                 <li style="cursor:pointer;"><a class="dropdown-item" (click)="quitarHospedajes(inscrito)">Eliminar hospedaje</a></li>
-                <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+
               </ul>
             </div>
 
@@ -174,28 +174,9 @@
                     <button class="btn btn-secondary btn-sm" type="button" (click)="updateHospedajes(inscrito)">Asignar</button>
                     <button class="btn btn-danger btn-sm" type="button" style="margin-left: 5px;" (click)="quitarHospedajes(inscrito)"><i class="fa fa-trash" aria-hidden="true">Quitar</i></button>
                   </div>
-                  <!-- <div>
-                  </div> -->
+
                 </div>
               </div>
-
-              <!-- <h6 class="card-title">Default Card</h6>
-              <div class="col-sm-2">
-                <span>{{inscrito.nombre}}</span>
-              </div>
-              <div class="col-sm-2">
-                <span>{{inscrito.c_nombre}}</span>
-               </div>
-
-            <div class="row-sm-4">
-              <h6 class="card-title">Distrito</h6>
-              <div class="col-sm">
-                {{inscrito.distrito}}
-              </div>
-              <div class="col-sm">
-                {{inscrito.presbiterio}}
-               </div>
-            </div> -->
 
             </div>
        </div>
@@ -203,72 +184,5 @@
     </div>
   </ng-template>
 
-  <!-- <div class="table-responsive">
-  <table class="table bodyTable table-hover">
-  <thead class="headTable">
-    <tr >
-      <th scope="col">accion</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Sex</th>
-      <th scope="col">CI</th>
-      <th scope="col">Celular</th>
-      <th scope="col">Email</th>
-      <th scope="col">Categoria</th>
-      <th scope="col">Función</th>
-      <th scope="col">Distrito</th>
-      <th scope="col">Provincia</th>
-      <th scope="col">Presbiterio</th>
-      <th scope="col">hospedaje</th>
-      <th scope="col">Confirmado</th>
-    </tr>
-    </thead>
-    <div class="spinner-border m-5" role="status" *ngIf="isLoading">
-      <span class="visually-hidden">Cargando...</span>
-    </div>
-    <tbody>
-      <div class="card" *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; "
-      [ngClass]="{ odd: odd, even: even }">
-        <div class="card-body">
-           <h5 class="card-title">Default Card</h5>
-           {{inscrito.nombre}}
-           {{inscrito.c_nombre}}
-          </div>
-     </div>
-      <tr *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; "
-      [ngClass]="{ odd: odd, even: even }">
-        <td>
 
-          <div class="dropdown">
-            <button class="btn btn-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-menu">
-              <li style="cursor:pointer;"><a class="dropdown-item" >Cancelar Inscripción</a></li>
-              <li style="cursor:pointer;"><a class="dropdown-item" href="#">Editar información</a></li>
-
-            </ul>
-          </div>
-
-        </td>
-        <td>{{inscrito.fecha | date:'d/M/yy'}}</td>
-        <td>{{inscrito.nombre}}</td>
-        <td>{{inscrito.genero}}</td>
-        <td>{{inscrito.ci}}</td>
-        <td>{{inscrito.celular}}</td>
-        <td>{{inscrito.email}}</td>
-        <td>{{inscrito.categoria}}</td>
-        <td>{{inscrito.funcion}}</td>
-        <td>{{inscrito.distrito}}</td>
-        <td>{{inscrito.provincia}}</td>
-        <td>{{inscrito.presbiterio}}</td>
-        <td>{{inscrito.hospedajeId}}</td>
-        <td>{{inscrito.isConfirmado | boolean}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>-->
-<div>
-  <div class="alert alert-secondary alert-dismissible fade show" role="alert"> Total de Inscripciones: {{inscritos.length}}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>
-</div>
 </div>

@@ -13,6 +13,7 @@ import { InscripcionesCanceladasComponent } from './inscripciones_canceladas/ins
 import { BuscarNombresPipe } from './pipes/buscar-nombres.pipe';
 import { HospedajesComponent } from './hospedajes/hospedajes.component';
 import { RouterModule } from '@angular/router';
+import { ArrayLengthPipe } from './pipes/array-length.pipe';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { RouterModule } from '@angular/router';
 
     BooleanPipe,
     FiltrarInscritosPipe,
-    BuscarNombresPipe
+    BuscarNombresPipe,
+    ArrayLengthPipe
   ],
   imports: [
     CommonModule,
