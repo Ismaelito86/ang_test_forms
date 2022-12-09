@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { timer } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { Login, LoginResponse } from 'src/app/template/interfaces';
 import Swal from 'sweetalert2';
@@ -42,10 +41,9 @@ export class LoginpageComponent implements OnInit {
             && this.miFormulario?.controls.email?.touched;
   }
 
-  // guardar( miFormulario: NgForm ) {
-  async guardar(){
+  async login(){
     this.isLoading=true;
-    console.log(this.loginForm);
+
     this.auth.loginService(this.loginForm).subscribe(
       (res: LoginResponse)=> {
         Swal.fire({

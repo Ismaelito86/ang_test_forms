@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-sm-4">
-      <form (ngSubmit)="guardar()"
+      <form (ngSubmit)="login()"
             #miLoginFormulario="ngForm"
             autocomplete="off">
 
@@ -51,11 +51,7 @@
         </div>
 
         <div class="alert alert-info" role="alert" *ngIf="success">
-          <!-- <h4 class="alert-heading">Bien!</h4>
-          <p>El Ministro <span class="fw-bold">{{initForm.nombre}}</span> ha sido Inscrito Correctamente. Estos fueron los datos: ci:<span class="fw-bold">{{initForm.ci}}</span>, email:<span class="fw-bold">{{initForm.email}}</span>.</p>
-          <hr>
-          <p class="mb-0">Asistencia del Conyugue: {{initForm.matrimonio}}</p>
-          <p class="mb-0">Hospedaje: {{initForm.hospedaje}}</p> -->
+
         </div>
         <div class="spinner-border m-5" role="status" *ngIf="isLoading">
           <span class="visually-hidden">Caegando...</span>
