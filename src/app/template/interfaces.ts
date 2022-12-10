@@ -28,6 +28,7 @@ export interface Login {
   presbiterioId?:string,
   isEjecutivo?:boolean,
   isPresbitero?:boolean,
+  isSecretario?:boolean,
   email:string,
   token:string
 }
