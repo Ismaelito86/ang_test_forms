@@ -1,10 +1,11 @@
 <div id="main" class="main">
 
   <h4>Inscripciones Canceladas</h4>
-  <div class="card-body" *ngIf="(user.isAdmin || user.isEjecutivo)">
+  <div class="card-body" *ngIf="(user.isAdmin || user.isEjecutivo || user.isSecretario)">
     <form class="row g-3">
        <div class="col-md-4">
-        <select class="form-select form-select-sm"
+        <select *ngIf="(user.isAdmin || user.isEjecutivo)"
+              class="form-select form-select-sm"
               name="distrito" [(ngModel)]="distrito"placeholder="Distrito">
         <option value="" selected>Seleccionar todos</option>
         <option value="1">Occidente</option>
