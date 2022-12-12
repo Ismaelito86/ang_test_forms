@@ -77,7 +77,7 @@ export class DinamicosComponent implements OnInit{
             console.log(err);
             Swal.fire(
               'ERROR!',
-              'Error de conexion! No se han realizado los cambios. Intentelo nuevamente. ',
+              'Error de conexion! No se han realizado los cambios. Intentelo nuevamente.',
               'error'
             )
           },
