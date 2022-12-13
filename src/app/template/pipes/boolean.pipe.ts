@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BooleanPipe implements PipeTransform {
 
-  transform(value: any, ): boolean {
-    return value === 1;
+  transform(value: any, ): string {
+    return value === 1?'Si':'No';
   }
 
 }
