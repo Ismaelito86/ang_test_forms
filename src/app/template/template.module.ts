@@ -14,6 +14,7 @@ import { BuscarNombresPipe } from './pipes/buscar-nombres.pipe';
 import { HospedajesComponent } from './hospedajes/hospedajes.component';
 import { RouterModule } from '@angular/router';
 import { ArrayLengthPipe } from './pipes/array-length.pipe';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ArrayLengthPipe } from './pipes/array-length.pipe';
     CustomMinDirective,
     InscripcionesCanceladasComponent,
     HospedajesComponent,
+    DashboardComponent,
     FiltrarPipe,
 
     BooleanPipe,

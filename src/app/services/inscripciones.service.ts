@@ -2,7 +2,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { hospedajesMatrimonios, hospedajesSinConyugue, InscripcionesResponse, updateInscripcionResponce } from '../template/interfaces';
+import { Estadisticas, hospedajesMatrimonios, hospedajesSinConyugue, InscripcionesResponse, updateInscripcionResponce } from '../template/interfaces';
 
 
 const URL = environment.baseUrl;
@@ -19,6 +19,13 @@ export class InscripcionesService {
       'authorization': `Bearer ${token}`
     });
     return this.http.get<InscripcionesResponse[]>(`${URL}/inscripciones`, {headers});
+  }
+  getInscritosEstadisticas(token:string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${token}`
+    });
+    return this.http.get<Estadisticas[]>(`${URL}/inscripciones/estadisticas`, {headers});
   }
 
   getInscripcionesCanceladas(token:string){

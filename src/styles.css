@@ -695,7 +695,7 @@
   .dashboard .info-card h6 {
 	font-size: 28px;
 	color: #012970;
-	font-weight: 700;
+	/* font-weight: 700; */
 	margin: 0;
 	padding: 0;
   }
@@ -707,18 +707,22 @@
 	flex-shrink: 0;
 	flex-grow: 0;
   }
-  .dashboard .sales-card .card-icon {
+  .dashboard .total-card .card-icon {
 	color: #4154f1;
 	background: #f6f6fe;
   }
-  .dashboard .revenue-card .card-icon {
+  .dashboard .matrimonio-card .card-icon {
 	color: #2eca6a;
 	background: #e0f8e9;
   }
-  .dashboard .customers-card .card-icon {
+  .dashboard .hombres-card .card-icon {
 	color: #ff771d;
 	background: #ffecdf;
   }
+  .dashboard .mujeres-card .card-icon {
+    color: #ff1d8e;
+    background: #ffdff7;
+    }
 
   /* Activity */
   .dashboard .activity {
@@ -1107,6 +1111,20 @@
   .bi-list-task::before { content: "\f477"; }
   .bi-list-ul::before { content: "\f478"; }
   .bi-list::before { content: "\f479"; }
+  .bi-people-fill::before { content: "\f4cf"; }
+  .bi-people::before { content: "\f4d0"; }
+  .bi-pencil-square::before { content: "\f4ca"; }
+  .bi-three-dots::before { content: "\f5d4"; }
+  .bi-suit-heart::before { content: "\f59e"; }
+  .bi-flower1::before { content: "\f3cd"; }
+  .bi-watch::before { content: "\f616"; }
+  .bi-grid::before { content: "\f3fc"; }
+  .bi-journal-text::before { content: "\f444"; }
+  .bi-bar-chart-line::before { content: "\f17c"; }
+  .bi-layout-text-window-reverse::before { content: "\f463"; }
+  .bi-journal-x::before { content: "\f445"; }
+  .bi-box-arrow-right::before { content: "\f1c3"; }
+  .bi-house::before { content: "\f425"; }
 
   .odd{
     background-color: #e9ecf1;

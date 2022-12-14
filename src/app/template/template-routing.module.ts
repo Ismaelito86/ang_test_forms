@@ -6,11 +6,13 @@ import { DinamicosComponent } from './dinamicos/dinamicos.component';
 import { InscripcionesCanceladasComponent } from './inscripciones_canceladas/inscripciones_cancel.component';
 import { HospedajesComponent } from './hospedajes/hospedajes.component';
 import { HospedajesGuard } from './hospedajes.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
+      { path: 'estadisticas', component: DashboardComponent },
       { path: 'basicos', component: BasicosComponent },
       { path: 'dinamicos', component: DinamicosComponent },
       { path: 'inscripciones_canceladas', component: InscripcionesCanceladasComponent },

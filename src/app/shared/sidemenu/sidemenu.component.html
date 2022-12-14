@@ -1,6 +1,7 @@
 <aside id="sidebar" class="sidebar">
   <ul class="sidebar-nav" id="sidebar-nav">
-     <li class="nav-item"> <a class="nav-link " routerLink="/dashboard"> <i class="bi bi-grid"></i> <span>Formulario de Inscripción</span> </a></li>
+     <li class="nav-item" (click)="sidebarToggle()"> <a class="nav-link " routerLink="template/basicos"> <i class="bi bi-journal-text"></i> <span>Formulario de Inscripción</span> </a></li>
+     <li class="nav-item" (click)="sidebarToggle()"> <a class="nav-link " routerLink="template/estadisticas"> <i class="bi bi-bar-chart-line"></i> <span>Estadísticas</span> </a></li>
      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i> </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -50,11 +51,11 @@
            <li> <a routerLink="/icons-boxicons"> <i class="bi bi-circle"></i><span>Boxicons</span> </a></li>
         </ul>
      </li> -->
-     <li class="nav-heading">Opciones</li>
-     <li class="nav-item"> <a class="nav-link collapsed" routerLink="template/dinamicos"> <i class="bi bi-person"></i> <span>Listado de Inscritos</span> </a></li>
-     <li class="nav-item"> <a class="nav-link collapsed" routerLink="template/inscripciones_canceladas"> <i class="bi bi-person"></i> <span>Inscripciones Canceladas</span> </a></li>
-     <li class="nav-item"> <a class="nav-link collapsed" routerLink="template/hospedajes"> <i class="bi bi-person"></i> <span>Hospedajes</span> </a></li>
-     <li class="nav-item" (click)="cerrarSession()"> <a class="nav-link collapsed" href="auth/login"> <i class="bi bi-person"></i> <span>Cerrar Sessión</span> </a></li>
+     <li (click)="sidebarToggle()" class="nav-heading">Opciones</li>
+     <li (click)="sidebarToggle()" class="nav-item"> <a class="nav-link collapsed" routerLink="template/dinamicos"> <i class="bi bi-layout-text-window-reverse"></i> <span>Listado de Inscritos</span> </a></li>
+     <li (click)="sidebarToggle()" class="nav-item"> <a class="nav-link collapsed" routerLink="template/inscripciones_canceladas"> <i class="bi bi-journal-x"></i> <span>Inscripciones Canceladas</span> </a></li>
+     <li (click)="sidebarToggle()" class="nav-item"> <a class="nav-link collapsed" routerLink="template/hospedajes"> <i class="bi bi-house"></i> <span>Hospedajes</span> </a></li>
+     <li class="nav-item" (click)="cerrarSession()"> <a class="nav-link collapsed" href="auth/login"> <i class="bi bi-box-arrow-right"></i> <span>Cerrar Sessión</span> </a></li>
 <!--      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/pages-faq"> <i class="bi bi-question-circle"></i> <span>F.A.Q</span> </a></li>
      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/pages-contact"> <i class="bi bi-envelope"></i> <span>Contact</span> </a></li>
      <li class="nav-item"> <a class="nav-link collapsed" routerLink="/pages-register"> <i class="bi bi-card-list"></i> <span>Register</span> </a></li>

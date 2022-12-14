@@ -33,6 +33,18 @@ export interface Login {
   token:string
 }
 
+export interface Estadisticas {
+  Total: string,
+  Hombres: string,
+  Mujeres: string,
+  Matrimonios: string,
+  Occidente: string,
+  Centro_Oeste: string,
+  Centro_Este: string,
+  Oriente_Norte: string,
+  Oriente_Sur: string,
+}
+
 export interface MinistroRequest{
   id?:string,
   nombre:string,

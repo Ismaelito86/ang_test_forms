@@ -1,0 +1,135 @@
+<main id="main" class="main">
+    <div class="row">
+       <h2>Estadística de Inscripciones</h2>
+       <hr>
+    </div>
+    <section class="section dashboard">
+       <div class="row">
+          <div class="col-lg-8">
+             <div class="row">
+                <div class="col-xxl-4 col-md-6">
+                   <div class="card info-card total-card">
+                     <div class="card-body">
+                         <h5 class="card-title">Inscritos <span>| actualmente</span></h5>
+                         <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-pencil-square"></i></div>
+                            <div class="ps-3">
+                               <h6>{{inscritos}}</h6>
+                               <span class="text-success small pt-1 fw-bold">TOTAL </span> <span class="text-muted small pt-2 ps-1">registrado.</span>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xxl-4 col-md-6">
+                  <div class="card info-card matrimonio-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Matrimonios <span>| actualmente</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-suit-heart"></i></div>
+                           <div class="ps-3">
+                              <h6>{{matrimonio}}</h6>
+                              <span class="text-success small pt-1 fw-bold">~{{(matrimonio*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xxl-4 col-md-6">
+                  <div class="card info-card hombres-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Hombres <span>| actualmente</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-watch"></i></div>
+                           <div class="ps-3">
+                              <h6>{{hombres}}</h6>
+                              <span class="text-success small pt-1 fw-bold">~{{(hombres*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xxl-4 col-md-6">
+                  <div class="card info-card mujeres-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Mujeres <span>| actualmente</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-flower1"></i></div>
+                           <div class="ps-3">
+                              <h6>{{mujeres}}</h6>
+                              <span class="text-success small pt-1 fw-bold">~{{(mujeres*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+                <div class="col-xxl-4 col-md-6">
+                   <div class="card info-card revenue-card">
+                     <div class="card-body">
+                         <h5 class="card-title">Occidente <span>| actualmente</span></h5>
+                         <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                               <h6>{{occ}}</h6>
+                               <span class="text-success small pt-1 fw-bold">~{{(occ*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xxl-4 col-xl-12">
+                   <div class="card info-card customers-card">
+                      <div class="card-body">
+                        <h5 class="card-title">Centro Oeste <span>| actualmente</span></h5>
+                         <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                               <h6>{{coeste}}</h6>
+                               <span class="text-success small pt-1 fw-bold">~{{(coeste*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Centro Este <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{ceste}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(ceste*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Oriente Norte <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{onorte}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(onorte*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Oriente Sur <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{osur}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(osur*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+       </div>
+    </section>
+ </main>
