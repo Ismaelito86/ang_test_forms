@@ -63,6 +63,34 @@
                      </div>
                   </div>
                </div>
+               <div class="col-xxl-4 col-md-6">
+                  <div class="card info-card hombres-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Hombres Solos <span>| actualmente</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-person"></i></div>
+                           <div class="ps-3">
+                              <h6>{{hombres_solos}}</h6>
+                              <span class="text-success small pt-1 fw-bold">~{{(hombres_solos*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xxl-4 col-md-6">
+                  <div class="card info-card mujeres-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Mujeres Solas <span>| actualmente</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center"> <i class="bi bi-person"></i></div>
+                           <div class="ps-3">
+                              <h6>{{mujeres_solas}}</h6>
+                              <span class="text-success small pt-1 fw-bold">~{{(mujeres_solas*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
                 <div class="col-xxl-4 col-md-6">
                    <div class="card info-card revenue-card">
                      <div class="card-body">
@@ -89,21 +117,22 @@
                       </div>
                    </div>
                 </div>
-             </div>
-          </div>
-          <div class="col-xxl-4 col-xl-12">
-            <div class="card info-card customers-card">
-               <div class="card-body">
-                 <h5 class="card-title">Centro Este <span>| actualmente</span></h5>
-                  <div class="d-flex align-items-center">
-                     <div class="ps-3">
-                        <h6>{{ceste}}</h6>
-                        <span class="text-success small pt-1 fw-bold">~{{(ceste*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                <div class="col-xxl-4 col-xl-12">
+                  <div class="card info-card customers-card">
+                     <div class="card-body">
+                       <h5 class="card-title">Centro Este <span>| actualmente</span></h5>
+                        <div class="d-flex align-items-center">
+                           <div class="ps-3">
+                              <h6>{{ceste}}</h6>
+                              <span class="text-success small pt-1 fw-bold">~{{(ceste*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
+             </div>
+          </div>
+
          <div class="col-xxl-4 col-xl-12">
             <div class="card info-card customers-card">
                <div class="card-body">
@@ -130,6 +159,219 @@
                </div>
             </div>
          </div>
+         <hr>
+         <div>
+            <h5>Presbiterios</h5>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Pinar del Río <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{pinar_del_rio}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(pinar_del_rio*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Artemisa <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{artemisa}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(artemisa*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Mayabeque <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{mayabeque}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(mayabeque*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">La Habana <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{la_habana}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(la_habana*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Matanzas <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{matanzas}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(matanzas*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Villa Clara <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{villa_clara}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(villa_clara*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Cienfuegos <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{cienfuegos}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(cienfuegos*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Sancti_Spiritu <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{sancti_spiritu}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(sancti_spiritu*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Ciego_de_Ávila <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{ciego_de_avila}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(ciego_de_avila*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Camagüey <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{camaguey}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(camaguey*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Las_Tunas <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{las_tunas}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(las_tunas*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Holguín <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{holguin}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(holguin*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Granma <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{granma}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(granma*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Santiago_de_Cuba <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{santiago_de_cuba}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(santiago_de_cuba*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Guantánamo <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{guantanamo}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(guantanamo*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+               <div class="card-body">
+                 <h5 class="card-title">Isla_de_la_Juventud <span>| actualmente</span></h5>
+                  <div class="d-flex align-items-center">
+                     <div class="ps-3">
+                        <h6>{{isla_de_la_juventud}}</h6>
+                        <span class="text-success small pt-1 fw-bold">~{{(isla_de_la_juventud*100)/inscritos | number: '1.0-0'}}%</span> <span class="text-muted small pt-2 ps-1">de las inscripciones.</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
        </div>
     </section>
  </main>

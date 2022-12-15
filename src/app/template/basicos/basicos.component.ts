@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -14,7 +15,7 @@ import { MinistroRequest, MinistroResponce,  Presbiterios, Provincias, updateMin
   styles: [
   ]
 })
-export class BasicosComponent implements OnInit {
+export class BasicosComponent implements OnInit, OnDestroy {
 
   @ViewChild('miFormulario') miFormulario!: NgForm;
   success = false;
@@ -43,13 +44,21 @@ export class BasicosComponent implements OnInit {
     ci_conyugue: '',
     softdelete:false,
   };
+
   provincias: Provincias[] = provinciasData;
   presbiterios: Presbiterios[] = presbiteriosData;
 
-
   terminosYCondiciones = false;
 
+  private update$: Subscription = new Subscription();
+  private guardar$: Subscription = new Subscription();
+
   constructor(private router: Router, private formService: AuthService, private routeParam: ActivatedRoute) {
+  }
+
+  ngOnDestroy(): void {
+    this.update$.unsubscribe();
+    this.guardar$.unsubscribe();
   }
 
 
@@ -115,7 +124,7 @@ export class BasicosComponent implements OnInit {
   // guardar( miFormulario: NgForm ) {
   async guardar(){
     this.isLoading=true;
-    this.formService.sendForm(this.initForm, this.token).subscribe(
+    this.guardar$ = this.formService.sendForm(this.initForm, this.token).subscribe(
       (res: MinistroResponce )=> {
         console.log(res.affectedRows);
         if (res.affectedRows===1) {
@@ -187,7 +196,7 @@ export class BasicosComponent implements OnInit {
 
   async update(){
     this.isLoading=true;
-    this.formService.updateForm(this.initForm, this.token).subscribe(
+    this.update$ = this.formService.updateForm(this.initForm, this.token).subscribe(
       (res: updateMinistroResponse)=> {
         console.log(res);
         if (res.ok) {

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { InscripcionesService } from 'src/app/services/inscripciones.service';
 import Swal from 'sweetalert2';
 import { presbiteriosData } from '../data/presbiterios';
@@ -12,7 +13,7 @@ import { InscripcionesResponse, LoginResponse, Presbiterios, Provincias } from '
   styles: [
   ]
 })
-export class InscripcionesCanceladasComponent implements OnInit{
+export class InscripcionesCanceladasComponent implements OnInit, OnDestroy{
 
   public inscritos: InscripcionesResponse[] = [];
   public isLoading = true;
@@ -24,6 +25,9 @@ export class InscripcionesCanceladasComponent implements OnInit{
   user : LoginResponse;
   token = '';
 
+  private inscripcionesCanceladas$: Subscription = new Subscription();
+  private reInscribir$: Subscription = new Subscription();
+
   provincias: Provincias[] = provinciasData;
   presbiterios: Presbiterios[] = presbiteriosData;
 
@@ -34,12 +38,16 @@ export class InscripcionesCanceladasComponent implements OnInit{
     this.provincia = this.user.provinciaId || '';
     this.presbiterio = this.user.presbiterioId || '';
   }
+  ngOnDestroy(): void {
+    this.inscripcionesCanceladas$.unsubscribe();
+    this.reInscribir$.unsubscribe();
+  }
   ngOnInit(): void {
     this.cargarInscripcionesCanceladas();
   }
 
   cargarInscripcionesCanceladas(){
-    return this.inscripcionesService.getInscripcionesCanceladas(this.token).subscribe({
+    this.inscripcionesCanceladas$ = this.inscripcionesService.getInscripcionesCanceladas(this.token).subscribe({
       next: (res:InscripcionesResponse[]) => {
         this.inscritos = res;
         console.log(res);
@@ -48,8 +56,6 @@ export class InscripcionesCanceladasComponent implements OnInit{
       error: (err) => console.log(err)
     });
   }
-
-  test(name:string){console.log(name); }
 
   reInscripcion(inscrito:InscripcionesResponse){
     Swal.fire({
@@ -63,7 +69,7 @@ export class InscripcionesCanceladasComponent implements OnInit{
     }).then((result) => {
       if (result.isConfirmed) {
         inscrito.isInscrito = true;
-        this.inscripcionesService.updateInscripcion(inscrito, this.token).subscribe({
+        this.reInscribir$ = this.inscripcionesService.updateInscripcion(inscrito, this.token).subscribe({
           next: (res)=> {
             console.log(res);
             this.router.navigateByUrl('template/dinamicos');

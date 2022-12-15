@@ -68,7 +68,6 @@
     <tbody>
       <tr *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; ">
         <td>
-          <!-- <button type="button" class="btn btn-link"><i class="fa fa-trash"></i></button> -->
           <div class="dropdown">
             <button class="btn btn-link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-three-dots"></i>
@@ -76,7 +75,6 @@
             <ul class="dropdown-menu">
               <li style="cursor:pointer;"><a class="dropdown-item" (click)="cancelarInscripcion(inscrito)">Cancelar Inscripción</a></li>
               <li style="cursor:pointer;"><a class="dropdown-item" [routerLink]="['template/basicos']" [queryParams]="inscrito" >Editar información</a></li>
-              <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
             </ul>
           </div>
 

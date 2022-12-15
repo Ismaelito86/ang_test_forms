@@ -67,8 +67,7 @@
     </div>
     <tbody>
       <tr *ngFor="let inscrito of inscritos|filtrarInscritos:distrito:provincia:presbiterio|buscarNombres:buscar; let even = even; let odd = odd; "
-      [ngClass]="{ odd: odd, even: even }"
-      (click)="test(inscrito.nombre)">
+      [ngClass]="{ odd: odd, even: even }">
         <td>
           <!-- <button type="button" class="btn btn-link"><i class="fa fa-trash"></i></button> -->
           <div class="dropdown">

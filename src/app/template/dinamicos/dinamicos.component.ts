@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { InscripcionesService } from 'src/app/services/inscripciones.service';
 import Swal from 'sweetalert2';
 import { presbiteriosData } from '../data/presbiterios';
@@ -12,7 +13,7 @@ import { InscripcionesResponse, LoginResponse, Presbiterios, Provincias } from '
   styles: [
   ]
 })
-export class DinamicosComponent implements OnInit{
+export class DinamicosComponent implements OnInit, OnDestroy{
 
   public inscritos: InscripcionesResponse[] = [];
   public isLoading = true;
@@ -21,8 +22,9 @@ export class DinamicosComponent implements OnInit{
   public presbiterio = '';
   public buscar = '';
   public lengthFilter = 0;
+  private inscripciones$: Subscription = new Subscription();
+  private cancelarinscripciones$: Subscription = new Subscription();
   token:string ='';
-
   user : LoginResponse;
 
   provincias: Provincias[] = provinciasData;
@@ -35,12 +37,16 @@ export class DinamicosComponent implements OnInit{
     this.provincia = this.user.provinciaId || '';
     this.presbiterio = this.user.presbiterioId || '';
   }
+  ngOnDestroy(): void {
+    this.inscripciones$.unsubscribe();
+    this.cancelarinscripciones$.unsubscribe();
+  }
   ngOnInit(): void {
     this.cargarInscripciones();
   }
 
   cargarInscripciones(){
-    return this.inscripcionesService.getInscritos(this.token).subscribe({
+    this.inscripciones$ = this.inscripcionesService.getInscritos(this.token).subscribe({
       next: (res:InscripcionesResponse[]) => {
         this.inscritos = res;
         console.log(res);
@@ -62,7 +68,7 @@ export class DinamicosComponent implements OnInit{
     }).then((result) => {
       if (result.isConfirmed) {
         inscrito.isInscrito = false;
-        this.inscripcionesService.updateInscripcion(inscrito, this.token).subscribe({
+        this.cancelarinscripciones$ = this.inscripcionesService.updateInscripcion(inscrito, this.token).subscribe({
           next: (res)=> {
             console.log(res);
             this.router.navigateByUrl('/dinamicos');

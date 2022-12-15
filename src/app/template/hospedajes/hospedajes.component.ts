@@ -25,7 +25,10 @@ export class HospedajesComponent implements OnInit, OnDestroy {
   public lengthFilter = 0;
   token = '';
 
-  suscription$: Subscription = new Subscription();
+  private cargarHospedaje$: Subscription = new Subscription();
+  private updateHospedaje$: Subscription = new Subscription();
+  private quitarHospedaje$: Subscription = new Subscription();
+  private sinConyugueHospedaje$: Subscription = new Subscription();
 
   user : LoginResponse;
 
@@ -50,7 +53,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
     if (this.inscritos.length > 0) {
       this.inscritos;
     } else {
-      this.inscripcionesService.getHospedajes(this.token).subscribe({
+      this.cargarHospedaje$ = this.inscripcionesService.getHospedajes(this.token).subscribe({
         next: (res:hospedajesMatrimonios[]) => {
           this.inscritos = res;
           console.log(res);
@@ -65,7 +68,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
     if (this.inscritosSinConyugue.length > 0) {
       this.inscritosSinConyugue;
     } else {
-      this.inscripcionesService.getHospedajesSinConyugue(this.token).subscribe({
+      this.sinConyugueHospedaje$ = this.inscripcionesService.getHospedajesSinConyugue(this.token).subscribe({
         next: (res: hospedajesSinConyugue[]) => {
           this.inscritosSinConyugue = res;
           console.log(res);
@@ -90,7 +93,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
     if (text) {
       console.log(text);
       inscrito.hospedajeId = text;
-      this.inscripcionesService.updateHospedaje(inscrito, this.token).subscribe({
+      this.updateHospedaje$ = this.inscripcionesService.updateHospedaje(inscrito, this.token).subscribe({
         next: (res) => {
           console.log(res);
           this.isLoading = false;
@@ -114,7 +117,7 @@ export class HospedajesComponent implements OnInit, OnDestroy {
   quitarHospedajes(inscrito: hospedajesMatrimonios | hospedajesSinConyugue){
 
       inscrito.hospedajeId = '';
-      this.inscripcionesService.updateHospedaje(inscrito, this.token).subscribe({
+      this.quitarHospedaje$ = this.inscripcionesService.updateHospedaje(inscrito, this.token).subscribe({
         next: (res) => {
           console.log(res);
           this.isLoading = false;
@@ -136,6 +139,9 @@ export class HospedajesComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
-    this.suscription$.unsubscribe();
+    this.cargarHospedaje$.unsubscribe();
+    this.updateHospedaje$.unsubscribe();
+    this.quitarHospedaje$.unsubscribe();
+    this.sinConyugueHospedaje$.unsubscribe();
   }
 }
